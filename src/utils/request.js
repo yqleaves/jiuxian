@@ -1,0 +1,28 @@
+import axios from "axios"
+
+const server = axios.create({
+    timeout:5000,
+
+    withCredentials:true,
+})
+
+server.interceptors.request.use((config)=>{
+    if(config.methods == "get"){
+        config.params = {...config.data};
+    }
+
+    // config.headers["content-type"] = "application/json";
+},(err)=>{
+    return Promise.reject(err);
+})
+
+server.interceptors.reponse.use((res)=>{
+    if(res.status == 200){
+        return res.data;
+    }
+},(err)=>{
+    return Promise.reject(err);
+})
+
+
+export default server
