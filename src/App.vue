@@ -1,9 +1,24 @@
 <template>
   <div id="app">
-   
+    <router-view></router-view>
+    <Footer v-if="$route.meta.flag"/>
   </div>
 </template>
 
-<style lang="scss">
+<script>
+import Footer from "@common/components/footer"
+export default {
+  name:"App",
+  components:{
+    Footer,
+  }
+}
+</script>
 
+<style lang="scss">
+  $color: #F90;
+  #app{
+    background: $color;
+    height: 100%;
+  }
 </style>

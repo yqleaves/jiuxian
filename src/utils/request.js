@@ -16,7 +16,7 @@ server.interceptors.request.use((config)=>{
     return Promise.reject(err);
 })
 
-server.interceptors.reponse.use((res)=>{
+server.interceptors.response.use((res)=>{
     if(res.status == 200){
         return res.data;
     }

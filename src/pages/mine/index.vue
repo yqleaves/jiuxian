@@ -1,0 +1,17 @@
+<template>
+    <div>
+        <h2>mine</h2>
+    </div>
+</template>
+
+<script>
+export default {
+    
+}
+</script>
+
+<script>
+export default {
+    
+}
+</script>
