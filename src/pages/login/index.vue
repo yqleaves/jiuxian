@@ -1,11 +1,16 @@
 <template>
     <div>
-        <h2>login</h2>
+        <Header title="登录" icon/>
+        <Lmain/>
     </div>
 </template>
 
 <script>
+import Lmain from "@/components/Lmain"
 export default {
-    name:"Login"
+    name:"Login",
+    components:{
+        Lmain,
+    }
 }
 </script>

@@ -1,5 +1,6 @@
 <template>
-     <div>
+     <div class="kind-box">
+         <Scroll>
          <div class="kind">
             <ul class="kind-box">
                 <li v-for="(item,index) in shopList" :key="index"><a href="">
@@ -10,42 +11,12 @@
                 </a></li>
             </ul>
         </div>
+        </Scroll>
 
          <!-- pubBanner -->
-        <div class="pubBanner">
+        <div class="pubBanner" v-for="(item,index) in image" :key="index">
             <a href="">
-                <img src="https://img10.jiuxian.com/bill/2019/0821/fb176ffae5b941a2aa0a38e88607a278.jpg" alt="">
-            </a>
-
-        </div>
-        <div class="pubBanner">
-            <a href="">
-                <img src="https://img09.jiuxian.com/bill/2019/1029/575a815f638540bcaa911d7380964897.jpg" alt="">
-            </a>
-        </div>
-        <div class="pubBanner">
-            <a href="">
-                <img src="https://img07.jiuxian.com/bill/2019/1029/af5c9a7ab7c24de0bf43979199ad6858.jpg" alt="">
-            </a>
-        </div>
-        <div class="pubBanner">
-            <a href="">
-                <img src="https://img08.jiuxian.com/bill/2019/1028/541b112ff30b4114a143ff74774a8aea.jpg" alt="">
-            </a>
-        </div>
-        <div class="pubBanner">
-            <a href="">
-                <img src="https://img08.jiuxian.com/bill/2019/1029/54b4b447e4da4fd8aa425c0e11790984.jpg" alt="">
-            </a>
-        </div>
-        <div class="pubBanner">
-            <a href="">
-                <img src="https://img09.jiuxian.com/bill/2019/1029/5e20cbefa3394c0d9487afd262e501cb.jpg" alt="">
-            </a>
-        </div>
-        <div class="pubBanner">
-            <a href="">
-                <img src="https://img07.jiuxian.com/bill/2019/1029/9a254ef163784bd79bb9ef13818179d8.jpg" alt="">
+                <img :src="item.img" alt="">
             </a>
         </div>
     </div>
@@ -60,7 +31,23 @@ export default {
             shopList:[],
             image:[
                 {
-
+                    img:"https://img10.jiuxian.com/bill/2019/0821/fb176ffae5b941a2aa0a38e88607a278.jpg"
+                    
+                },
+                {
+                    img:"https://img09.jiuxian.com/bill/2019/1029/575a815f638540bcaa911d7380964897.jpg"
+                },
+                {
+                    img:"https://img07.jiuxian.com/bill/2019/1029/af5c9a7ab7c24de0bf43979199ad6858.jpg"
+                },
+                {
+                    img:"https://img08.jiuxian.com/bill/2019/1028/541b112ff30b4114a143ff74774a8aea.jpg"
+                },
+                {
+                    img:"https://img08.jiuxian.com/bill/2019/1029/54b4b447e4da4fd8aa425c0e11790984.jpg"
+                },
+                {
+                    img:"https://img07.jiuxian.com/bill/2019/1029/9a254ef163784bd79bb9ef13818179d8.jpg"
                 }
             ]
         }
@@ -73,7 +60,7 @@ export default {
     methods:{
         async handleGetshopList(tabnum){
             let data = await shopListApi(tabnum);
-            console.log(data)
+            // console.log(data)
             this.shopList = data.killProList                                                              
         }
     }
@@ -81,18 +68,22 @@ export default {
 </script>
 
 <style lang="scss">
-      /* 横向滚动 */
+/* 横向滚动 */
+.kind-box{
+    width: 100%;
+    overflow-x:inherit; 
+}
 .kind{
     height: 1.6rem;
     background: #fff;
     position: relative;
     overflow: hidden;
+    width: 10rem;
     padding: 5px 0;
     padding-left: .1rem;
-    overflow-x: initial;
 }
 .kind .kind-box{
-    overflow-x: auto;
+    // overflow-x: auto;
     width: 10rem;
     height: 100%;
     display: flex;

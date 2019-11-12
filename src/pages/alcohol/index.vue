@@ -1,10 +1,17 @@
 <template>
+
     <div class="alcohol">
-        <Picture/>
-        <Kind/>
-        <Shop/>
-        <List/>
+        <Scroll ref="yscroll">
+        <div class="content">
+            <Picture/>
+            <Kind/>
+            <Shop/>
+            <List/>
+        </div>
+       </Scroll>
+
     </div>
+   
 </template>
 
 <script>
@@ -25,8 +32,12 @@ export default {
         document.title = this.$route.meta.title;
         // let data = await shopList(1);
         // console.log(data);
-        
     },
+    mounted(){
+        this.$refs.yscroll.handlepullingDown();
+        // this.$refs.yscroll.handlepullingUp();
+    }
+    
     
 
 

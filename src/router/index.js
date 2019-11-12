@@ -2,6 +2,7 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import alcohol from "./alcohol";
 import cart from "./cart";
+
 Vue.use(VueRouter);
 
 const router = new VueRouter({
@@ -13,6 +14,13 @@ const router = new VueRouter({
         },
         alcohol,
         cart,
+        {
+            path:"/detail",
+            // path:"/detail/:brandId/:pname",
+            component:_=>import("@pages/detail"),
+            name:"detail",
+            props:true
+        },
         {
             path:"/mine",
             name:"mine",

@@ -1,50 +1,69 @@
 <template>
-    <div>
+
+    <div class="list" >
         <!-- 爆款 -->
         <div class="title">
             爆款推荐
         </div>
-        <div class="recommend">
-            <li v-for="(item,index) in recommendList" :key="index">
-                <i :style="item.promo">{{item.promo.name}}</i>
-                <a href="">
-                    <img :src="item.commonProductInfo.imgPath" alt="">
-                    <span class="item-title">{{item.commonProductInfo.pname}}</span>
-                    <span class="item-price">
-                        <em>￥{{item.commonProductInfo.actPrice}}</em>
-                        <b>￥{{item.commonProductInfo.jxPrice}}</b>
-                    </span>
-                </a>
-            </li>
-           
-        </div>
+        <Scroll ref="scroll">
+            <div class="recommend">
+                <li v-for="(item,index) in recommendList" :key="index">
+                    <i >{{item.promo.name}}</i>
+                    <router-link :to="'/detail?id='+item.commonProductInfo.brandId+'&name='+item.commonProductInfo.pname+
+                    '&img='+item.commonProductInfo.imgPath" >
+                        <img :src="item.commonProductInfo.imgPath" alt="">
+                        <span class="item-title">{{item.commonProductInfo.pname}}</span>
+                        <span class="item-price">
+                            <em>￥{{item.commonProductInfo.actPrice.toFixed(2)}}</em>
+                            <b>￥{{item.commonProductInfo.jxPrice.toFixed(2)}}</b>
+                        </span>
+                    </router-link>
+                </li>
+            </div>
+        </Scroll>
     </div>
+    
     <!-- </div> -->
 </template>
 
 <script>
+// import BScroll from "better-scroll";
 import {recommendListApi} from "@api/alcohol"
 export default {
     name:"List",
     data(){
         return{
             recommendList:[],
-            style:[],
+        }
+    },
+    watch:{
+        recommendList(){
+            // this.$refs.scroll.handlefinishPullingUp();
+            console.log("更新了")
         }
     },
     created(){
-        this.handleRecommendList(1165)
+        this.handleRecommendList(1)
         // let data = await recommendListApi(1165);
         // console.log(data)
     },
     methods:{
-        async handleRecommendList(topicId){
-             let data = await recommendListApi(topicId);
-             this.recommendList = data.promoList,
-             this.style = this.recommendList.proto
+        async handleRecommendList(pageNum){
+             let data = await recommendListApi(pageNum);
+             this.recommendList = [...this.recommendList,...data.promoList];
+             console.log(this.recommendList[0].promo)
         }
        
+    },
+    mounted(){
+        this.$refs.scroll.handlepullingUp(()=>{
+            console.log(111)
+            var index = 1;
+            this.handleRecommendList(this.index++)
+        })
+        // this.$refs.scroll.handleScroll();
     }
+ 
 
     
     
@@ -64,6 +83,7 @@ export default {
     font-size: .12rem;
     border-bottom: 1px solid #f1f1f1;
 }
+
 .recommend{
     width: 100%;
     height: 100%;
