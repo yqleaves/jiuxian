@@ -100,6 +100,8 @@ export default {
 
     html,body{
     font-size:26.67vw;
+   
+    height:100%;
 }
 /*头部*/
 .head{
@@ -171,6 +173,8 @@ export default {
     display: flex;
     flex-wrap: wrap;
     align-content: flex-start;
+    background: #fff;
+    height:100%;
 }
 .main li{
     list-style: none;
