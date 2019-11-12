@@ -7,6 +7,7 @@ import VueTouch from "vue-touch";
 
 Vue.use(VueTouch,{name:"v-touch"})
 
+
 Vue.config.productionTip = false
 
 new Vue({

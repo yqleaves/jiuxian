@@ -5,6 +5,7 @@
   </div>
 </template>
 
+
 <script>
 import Footer from "@common/components/footer"
 export default {
@@ -21,4 +22,6 @@ export default {
     background: $color;
     height: 100%;
   }
+
+
 </style>

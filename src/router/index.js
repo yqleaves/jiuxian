@@ -29,6 +29,14 @@ const router = new VueRouter({
             meta:{
                 flag:false
             }
+        },
+        {
+            path:"/sort",
+            name:"sort",
+            component:()=>import("@pages/sort"),
+            meta:{
+                flag:false
+            }
         }
         
     ]
