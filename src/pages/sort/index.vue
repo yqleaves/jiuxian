@@ -1,12 +1,13 @@
 <template>
   <div>
     <!-- 头部 -->
-    <div class="head">
+    <!-- <div class="head">
       <img class="left" src="../../../public/img/headBack.jpg" alt />
 
       <div class="middle">选酒</div>
       <div class="right"></div>
-    </div>
+    </div> -->
+    <Header title="选酒" icon />
     <!-- 搜索 -->
     <div class="sousuo">
       <input type="text" placeholder="硬核11.11豪掷千万补贴" />
@@ -15,7 +16,7 @@
     <!-- 主体 -->
     <div class="main">
       <li>
-        <a href="#">
+        <a href="/#/baijiu">
           <i></i>
           <span>白酒</span>
         </a>
@@ -104,7 +105,7 @@ export default {
     height:100%;
 }
 /*头部*/
-.head{
+/* .head{
     height:0.4rem;
     width:100%;
     background: #de4943;
@@ -133,7 +134,7 @@ export default {
     height:0.3rem;
     background: url(../../../public/img/headIcon.png) no-repeat -150px 6px;
     margin-top:0.04rem;
-}
+} */
 /*搜索*/
 .sousuo{
     height: 0.4rem;
@@ -141,6 +142,7 @@ export default {
     border-bottom:1px solid #ccc;
     display: flex;
     position: relative;
+    margin-top:0.4rem;
 }
 .sousuo input{
     font-size:0.12rem;
@@ -162,7 +164,7 @@ export default {
     width:0.12rem;
     position: absolute;
     top:0.16rem;
-    left:0.25rem;
+    left:0.6rem;
     background: url(../../../public/img/searchIcon.png) no-repeat -41px -18px;
     background-size: 1.2rem 0.4rem;
 }

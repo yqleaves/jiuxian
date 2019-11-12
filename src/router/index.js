@@ -17,7 +17,7 @@ const router = new VueRouter({
             path:"/mine",
             name:"mine",
             meta:{
-                flag:true,
+                flag:false,
                 requiredAuth:true,
             },
             component:()=>import("@pages/mine")
@@ -34,6 +34,22 @@ const router = new VueRouter({
             path:"/sort",
             name:"sort",
             component:()=>import("@pages/sort"),
+            meta:{
+                flag:false
+            }
+        },
+        {
+            path:"/baijiu",
+            name:"baijiu",
+            component:()=>import("@pages/baijiu"),
+            meta:{
+                flag:false
+            }
+        },
+        {
+            path:"/search",
+            name:"search",
+            component:()=>import("@pages/search"),
             meta:{
                 flag:false
             }
