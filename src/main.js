@@ -2,6 +2,10 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
+import "@common/components/index"
+import VueTouch from "vue-touch";
+
+Vue.use(VueTouch,{name:"v-touch"})
 
 Vue.config.productionTip = false
 

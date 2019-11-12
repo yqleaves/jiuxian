@@ -12,6 +12,7 @@ import Picture from "@/components/picture"
 import Kind from "@/components/kind"
 import Shop from "@/components/shop"
 import List from "@/components/list"
+
 export default {
     name:"Alcohol",
     components:{
@@ -22,7 +23,11 @@ export default {
     },
     created(){
         document.title = this.$route.meta.title;
-    }
+        // let data = await shopList(1);
+        // console.log(data);
+        
+    },
+    
 
 
 }

@@ -11,6 +11,7 @@ server.interceptors.request.use((config)=>{
         config.params = {...config.data};
     }
 
+    return config;
     // config.headers["content-type"] = "application/json";
 },(err)=>{
     return Promise.reject(err);

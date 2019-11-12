@@ -8,7 +8,7 @@
             </van-swipe>
         <!-- <div class="swiper-pagination"></div> -->
         <!--分页器。如果放置在swiper-container外面，需要自定义样式。-->
-        <div class="header">
+        <div class="head">
             <i></i>
             <div class="search">
                 <b></b>
@@ -77,7 +77,7 @@ export default {
 }
 
 /* header */
-.header{
+.head{
     height: .4rem;
     width: 100%;
     display: flex;
@@ -88,7 +88,7 @@ export default {
     justify-content: space-around;
     align-items: center;
 }
-.header i{
+.head i{
     width: .57rem;
     height: .27rem;
     background: url(https://m.jiuxian.com/mjava_statics/images/home/jx-sprite.png) no-repeat;
@@ -96,7 +96,7 @@ export default {
     border-radius: 3px;
     background-position: 0 0;
 }
-.header .search{
+.head .search{
     width: 2.9rem;
     height: .27rem;
     border-radius: 3px;
@@ -106,7 +106,7 @@ export default {
     align-items: center;
     padding: 0 .1rem;
 }
-.header .search b{
+.head .search b{
     background: url(https://mlist.jiuxian.com/mjava_statics/images/search/searchIcon.png) no-repeat;
     background-size: 1.2rem .4rem;
     cursor: pointer;
@@ -116,7 +116,7 @@ export default {
     background-position: -.41rem -.18rem;
     margin-right: .2rem;
 }
-.header .search span{
+.head .search span{
     font-size: .12rem;
     color: #666;
     width: 1.5rem;

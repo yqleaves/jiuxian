@@ -7,7 +7,8 @@ module.exports = {
                 target:"https://m.jiuxian.com",
                 changeOrigin:true
             }
-        }
+        },
+       
     },
     // 别名配置
     configureWebpack:{

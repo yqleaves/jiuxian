@@ -2,49 +2,12 @@
      <div>
          <div class="kind">
             <ul class="kind-box">
-                <li><a href="">
-                        <img src="https://img08.jiuxian.com/2014/0111/8b673ebe7ebb45089e766a72850ad33c4.jpg" alt="">
-                        <span class="name">43°茅台迎宾酒500ml</span>
-                        <span class="price">￥68.00</span>
-                        <span class="o-price">￥118.00</span>
-                    </a></li>
-                <li><a href="">
-                        <img src="https://img06.jiuxian.com/2017/0121/699352b5853a4a44b88588ed08b0a65c4.jpg" alt="">
-                        <span class="name">澳洲整箱红酒澳大利亚黄尾袋鼠加本力苏维翁红葡萄酒（6瓶装）</span>
-                        <span class="price">￥268.00</span>
-                        <span class="o-price">￥330.00</span>
-                    </a></li>
-
-                <li><a href="">
-                        <img src="https://img09.jiuxian.com/2019/0830/1ccbb93de56b4043ac33060e6885d1334.jpg" alt="">
-                        <span class="name">西班牙安徒生美人鱼干红葡萄酒750ml*6</span>
-                        <span class="price">￥219.00</span>
-                        <span class="o-price">￥299.00</span>
-                    </a></li>
-                <li><a href="">
-                        <img src="https://img07.jiuxian.com/2018/0106/bce6bb4392e742c3b288614a9022c9894.jpg" alt="">
-                        <span class="name">【爆款特卖】52°洋河蓝色经典梦之蓝M3 500ml*6</span>
-                        <span class="price">￥569.00</span>
-                        <!-- <span class="o-price">￥299.00</span> -->
-                    </a></li>
-                <li><a href="">
-                        <img src="https://img09.jiuxian.com/2019/0830/1ccbb93de56b4043ac33060e6885d1334.jpg" alt="">
-                        <span class="name">澳洲整箱红酒澳大利亚黄尾袋鼠加本力苏维翁红葡萄酒（6瓶装）</span>
-                        <span class="price">￥268.00</span>
-                        <span class="o-price">￥330.00</span>
-                    </a></li>
-                    <li><a href="">
-                        <img src="https://img07.jiuxian.com/2018/0106/bce6bb4392e742c3b288614a9022c9894.jpg" alt="">
-                        <span class="name">【爆款特卖】52°洋河蓝色经典梦之蓝M3 500ml*6</span>
-                        <span class="price">￥569.00</span>
-                        <!-- <span class="o-price">￥299.00</span> -->
-                    </a></li>
-                <li><a href="">
-                        <img src="https://img09.jiuxian.com/2019/0830/1ccbb93de56b4043ac33060e6885d1334.jpg" alt="">
-                        <span class="name">澳洲整箱红酒澳大利亚黄尾袋鼠加本力苏维翁红葡萄酒（6瓶装）</span>
-                        <span class="price">￥268.00</span>
-                        <span class="o-price">￥330.00</span>
-                    </a></li>
+                <li v-for="(item,index) in shopList" :key="index"><a href="">
+                    <img :src="item.proImg" alt="">
+                    <span class="name">{{item.proName}}</span>
+                    <span class="price">￥{{item.proPrice.toFixed(2)}}</span>
+                    <span class="o-price">￥{{item.jxPrice.toFixed(2)}}</span>
+                </a></li>
             </ul>
         </div>
 
@@ -89,8 +52,31 @@
 </template>
 
 <script>
+import {shopListApi} from "@api/alcohol";
 export default {
-    
+    name:"Shop",
+    data(){
+        return {
+            shopList:[],
+            image:[
+                {
+
+                }
+            ]
+        }
+    },
+    created(){
+        this.handleGetshopList(1);
+        //  let data = await shopListApi(1);
+        // console.log(data);
+    },
+    methods:{
+        async handleGetshopList(tabnum){
+            let data = await shopListApi(tabnum);
+            console.log(data)
+            this.shopList = data.killProList                                                              
+        }
+    }
 }
 </script>
 

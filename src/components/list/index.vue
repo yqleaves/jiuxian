@@ -5,79 +5,48 @@
             爆款推荐
         </div>
         <div class="recommend">
-            <li>
-                <i>掌上秒拍</i>
+            <li v-for="(item,index) in recommendList" :key="index">
+                <i :style="item.promo">{{item.promo.name}}</i>
                 <a href="">
-                    <img src="https://img10.jiuxian.com/2019/1028/a874f5ceeb71409294ffd5717bbc61a84.jpg" alt="">
-                    <span class="item-title">52°白水杜康一坛老酒1000ml(双坛装)+沁州黄小米500g（一袋）</span>
+                    <img :src="item.commonProductInfo.imgPath" alt="">
+                    <span class="item-title">{{item.commonProductInfo.pname}}</span>
                     <span class="item-price">
-                        <em>￥98.00</em>
-                        <b>￥237.00</b>
+                        <em>￥{{item.commonProductInfo.actPrice}}</em>
+                        <b>￥{{item.commonProductInfo.jxPrice}}</b>
                     </span>
                 </a>
             </li>
-            <li>
-                <i>掌上秒拍</i>
-                <a href="">
-                    <img src="https://img10.jiuxian.com/2019/1028/a874f5ceeb71409294ffd5717bbc61a84.jpg" alt="">
-                    <span class="item-title">52°白水杜康一坛老酒1000ml(双坛装)+沁州黄小米500g（一袋）</span>
-                    <span class="item-price">
-                        <em>￥98.00</em>
-                        <b>￥237.00</b>
-                    </span>
-                </a>
-            </li>
-            <li>
-                <i>掌上秒拍</i>
-                <a href="">
-                    <img src="https://img10.jiuxian.com/2019/1028/a874f5ceeb71409294ffd5717bbc61a84.jpg" alt="">
-                    <span class="item-title">52°白水杜康一坛老酒1000ml(双坛装)+沁州黄小米500g（一袋）</span>
-                    <span class="item-price">
-                        <em>￥98.00</em>
-                        <b>￥237.00</b>
-                    </span>
-                </a>
-            </li>
-            <li>
-                <i>掌上秒拍</i>
-                <a href="">
-                    <img src="https://img10.jiuxian.com/2019/1028/a874f5ceeb71409294ffd5717bbc61a84.jpg" alt="">
-                    <span class="item-title">52°白水杜康一坛老酒1000ml(双坛装)+沁州黄小米500g（一袋）</span>
-                    <span class="item-price">
-                        <em>￥98.00</em>
-                        <b>￥237.00</b>
-                    </span>
-                </a>
-            </li>
-            <li>
-                <i>掌上秒拍</i>
-                <a href="">
-                    <img src="https://img10.jiuxian.com/2019/1028/a874f5ceeb71409294ffd5717bbc61a84.jpg" alt="">
-                    <span class="item-title">52°白水杜康一坛老酒1000ml(双坛装)+沁州黄小米500g（一袋）</span>
-                    <span class="item-price">
-                        <em>￥98.00</em>
-                        <b>￥237.00</b>
-                    </span>
-                </a>
-            </li>
-            <li>
-                <i>掌上秒拍</i>
-                <a href="">
-                    <img src="https://img10.jiuxian.com/2019/1028/a874f5ceeb71409294ffd5717bbc61a84.jpg" alt="">
-                    <span class="item-title">52°白水杜康一坛老酒1000ml(双坛装)+沁州黄小米500g（一袋）</span>
-                    <span class="item-price">
-                        <em>￥98.00</em>
-                        <b>￥237.00</b>
-                    </span>
-                </a>
-            </li>
+           
         </div>
     </div>
     <!-- </div> -->
 </template>
 
 <script>
+import {recommendListApi} from "@api/alcohol"
 export default {
+    name:"List",
+    data(){
+        return{
+            recommendList:[],
+            style:[],
+        }
+    },
+    created(){
+        this.handleRecommendList(1165)
+        // let data = await recommendListApi(1165);
+        // console.log(data)
+    },
+    methods:{
+        async handleRecommendList(topicId){
+             let data = await recommendListApi(topicId);
+             this.recommendList = data.promoList,
+             this.style = this.recommendList.proto
+        }
+       
+    }
+
+    
     
 }
 </script>
