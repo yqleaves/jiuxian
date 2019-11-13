@@ -1,14 +1,14 @@
 <template>
-
+  <Scroll ref="scroll">
     <div class="list" >
         <!-- 爆款 -->
         <div class="title">
             爆款推荐
         </div>
-        <Scroll ref="scroll">
+      
             <div class="recommend">
                 <li v-for="(item,index) in recommendList" :key="index">
-                    <i >{{item.promo.name}}</i>
+                    <!-- <i >{{item.promo.name}}</i> -->
                     <router-link :to="'/detail?id='+item.commonProductInfo.brandId+'&name='+item.commonProductInfo.pname+
                     '&img='+item.commonProductInfo.imgPath" >
                         <img :src="item.commonProductInfo.imgPath" alt="">
@@ -20,9 +20,9 @@
                     </router-link>
                 </li>
             </div>
-        </Scroll>
+       
     </div>
-    
+     </Scroll>
     <!-- </div> -->
 </template>
 

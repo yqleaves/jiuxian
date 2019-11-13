@@ -1,14 +1,14 @@
 <template>
 
     <div class="alcohol">
-        <Scroll ref="yscroll">
+        <!-- <Scroll ref="yscroll"> -->
         <div class="content">
             <Picture/>
             <Kind/>
             <Shop/>
             <List/>
         </div>
-       </Scroll>
+       <!-- </Scroll> -->
 
     </div>
    
