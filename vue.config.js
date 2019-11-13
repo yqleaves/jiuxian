@@ -3,10 +3,16 @@ const path  = require('path');
 module.exports = {
     devServer:{
         proxy:{
+           
             "/m_v1":{
                 target:"https://m.jiuxian.com",
                 changeOrigin:true
-            }
+            },
+            "/":{
+                target:"https://jc.jiuxian.com",
+                changeOrigin:true
+            },
+            
         },
        
     },

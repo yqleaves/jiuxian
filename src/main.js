@@ -4,6 +4,7 @@ import router from './router'
 import store from './store'
 import "@common/components/index"
 import VueTouch from "vue-touch";
+import "./lib/loading/index"
 
 Vue.use(VueTouch,{name:"v-touch"})
 
@@ -11,7 +12,7 @@ Vue.use(VueTouch,{name:"v-touch"})
 Vue.config.productionTip = false
 
 new Vue({
-  router,
   store,
+  router,
   render: h => h(App)
 }).$mount('#app')

@@ -56,17 +56,17 @@ export default {
 
     mounted(){
          var swiper = new Swiper('.newList', {
-        direction: 'vertical',
-        loop: true,
-        autoplay: {
-            delay: 3000,
-            disableOnInteraction: true,
-        },
-        pagination: {
-            el: '.swiper-pagination',
-            clickable: true,
-        },
-    })
+                direction: 'vertical',
+                loop: true,
+                autoplay: {
+                    delay: 3000,
+                    disableOnInteraction: true,
+                },
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+            })
         }
 }
 </script>

@@ -61,6 +61,14 @@ const router = new VueRouter({
             meta:{
                 flag:false
             }
+        },
+        {
+            path:"/city",
+            name:"city",
+            component:()=>import("@pages/city"),
+            meta:{
+                flag:false
+            }
         }
         
     ]
