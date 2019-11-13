@@ -6,8 +6,13 @@ module.exports = {
             "/m_v1":{
                 target:"https://m.jiuxian.com",
                 changeOrigin:true
+            },
+            "/BtCApi":{
+                target:"http://m.gjw.com",
+                changeOrigin:true,
             }
         },
+        
        
     },
     // 别名配置
@@ -31,3 +36,5 @@ module.exports = {
 }
 
 // /promote/qgajax.do?t=1573453803273&pagenum=1&tabnum=1
+
+//http://m.gjw.com/BtCApi/Search/GetSearchStr?str=d

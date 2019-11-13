@@ -2,7 +2,7 @@
   <div>
     <!-- 头部 -->
     <div class="head">
-      <div class="left"></div>
+      <div class="left"  @click="handleback()"></div>
       <input class="middle" type="text" placeholder="硬核11.11豪掷千万补贴" />
       <div class="fangdajing"></div>
       <div class="right"></div>
@@ -57,6 +57,9 @@ export default {
       let data = await baijiuApi(pageNum);
       //console.log(data);
       this.baijiuList = data.promoList;
+    },
+    handleback(){
+      this.$router.back();
     }
   }
 };
@@ -113,7 +116,7 @@ body {
   background: url(../../../public/img/listIcon.png) no-repeat 0 -45px;
   background-size: 100px 78px;
   margin-right: 0.1rem;
-  margin-top:0.15rem;
+  margin-top:0.03rem;
 }
 /*导航*/
 .nav {

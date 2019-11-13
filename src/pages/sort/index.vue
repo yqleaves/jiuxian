@@ -1,12 +1,6 @@
 <template>
   <div>
     <!-- 头部 -->
-    <!-- <div class="head">
-      <img class="left" src="../../../public/img/headBack.jpg" alt />
-
-      <div class="middle">选酒</div>
-      <div class="right"></div>
-    </div> -->
     <Header title="选酒" icon />
     <!-- 搜索 -->
     <div class="sousuo">
@@ -15,76 +9,10 @@
     </div>
     <!-- 主体 -->
     <div class="main">
-      <li>
-        <a href="/#/baijiu">
-          <i></i>
-          <span>白酒</span>
-        </a>
-      </li>
-      <li>
-        <a href="#">
-          <i></i>
-          <span>葡萄酒</span>
-        </a>
-      </li>
-      <li class="br">
-        <a href="#">
-          <i></i>
-          <span>洋酒</span>
-        </a>
-      </li>
-      <li>
-        <a href="#">
-          <i></i>
-          <span>整箱购</span>
-        </a>
-      </li>
-      <li>
-        <a href="#">
-          <i></i>
-          <span>老酒</span>
-        </a>
-      </li>
-      <li class="br">
-        <a href="#">
-          <i></i>
-          <span>清仓特卖</span>
-        </a>
-      </li>
-      <li>
-        <a href="#">
-          <i></i>
-          <span>海外直采</span>
-        </a>
-      </li>
-      <li>
-        <a href="#">
-          <i></i>
-          <span>精美大坛</span>
-        </a>
-      </li>
-      <li class="br">
-        <a href="#">
-          <i></i>
-          <span>红酒整箱</span>
-        </a>
-      </li>
-      <li>
-        <a href="#">
-          <i></i>
-          <span>值得买</span>
-        </a>
-      </li>
-      <li>
-        <a href="#">
-          <i></i>
-          <span>销量排行</span>
-        </a>
-      </li>
-      <li class="br">
-        <a href="#">
-          <i></i>
-          <span>礼尚往来</span>
+      <li v-for="(item,index) in arr" :key="index">
+        <a :href="item.path">
+        <i></i>
+        <span>{{item.name}}</span>
         </a>
       </li>
     </div>
@@ -93,7 +21,62 @@
 
 <script>
 export default {
-    name:"sort"
+    name:"sort",
+    data(){
+      return {
+        arr:[
+          {
+            name:"白酒",
+            path:"/#/baijiu"
+
+          },
+           {
+            name:"葡萄酒",
+            path:"#"
+          },
+          {
+            name:"洋酒",
+            path:"#"
+          },
+          {
+            name:"整箱购",
+            path:"#"
+          },
+          {
+            name:"老酒",
+            path:"#"
+          },
+          {
+            name:"清仓特卖",
+            path:"#"
+          },
+          {
+            name:"海外直采",
+            path:"#"
+          },
+          {
+            name:"精美大坛",
+            path:"#"
+          },
+          {
+            name:"红酒整箱",
+            path:"#"
+          },
+          {
+            name:"值得买",
+            path:"#"
+          },
+          {
+            name:"销量排行",
+            path:"#"
+          },
+          {
+            name:"礼尚往来",
+            path:"#"
+          }
+        ]
+      }
+    }
 };
 </script>
 
@@ -105,36 +88,7 @@ export default {
     height:100%;
 }
 /*头部*/
-/* .head{
-    height:0.4rem;
-    width:100%;
-    background: #de4943;
-    display: flex;
-    justify-content: space-around;
-}
-.head .left{
-    width:0.3rem;
-    height:0.4rem;
-   
-}
-.head .left img{
-    
-    display: inline;
-}
-.head .middle{
-    font-size:0.16rem;
-    height:0.4rem;
-    width:2.2rem;
-    color:#fff;
-    text-align:center;
-    line-height: 0.4rem;;
-}
-.head .right{
-    width: 0.3rem;
-    height:0.3rem;
-    background: url(../../../public/img/headIcon.png) no-repeat -150px 6px;
-    margin-top:0.04rem;
-} */
+
 /*搜索*/
 .sousuo{
     height: 0.4rem;

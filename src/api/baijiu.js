@@ -8,11 +8,10 @@ export const baijiuApi = (pageNum)=>http({
     }
 })
 
-export const searchApi = (wd,_)=>http({
+export const searchApi = (str)=>http({
     method:"get",
-    url:"/m_v1/search/getSuggestKeyword?jsoncallback=jQuery16204199633724587226_1573569939647",
+    url:"/BtCApi/Search/GetSearchStr",
     data:{
-        wd,
-        _
+        str
     }
 })
