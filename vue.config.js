@@ -3,6 +3,7 @@ const path  = require('path');
 module.exports = {
     devServer:{
         proxy:{
+           
             "/m_v1":{
                 target:"https://m.jiuxian.com",
                 changeOrigin:true
@@ -10,7 +11,15 @@ module.exports = {
             "/BtCApi":{
                 target:"http://m.gjw.com",
                 changeOrigin:true,
-            }
+            },
+            // "/":{
+            //     target:"https://jc.jiuxian.com",
+            //     changeOrigin:true
+            // },
+            "/api":{
+                target:"http://39.97.33.178",
+                changeOrigin:true
+            },
         },
         
        
