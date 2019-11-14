@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="sortbox">
     <!-- 头部 -->
     <Header title="选酒" icon />
     <!-- 搜索 -->
@@ -32,47 +32,47 @@ export default {
           },
            {
             name:"葡萄酒",
-            path:"#"
+            path:"/#/putaojiu"
           },
           {
             name:"洋酒",
-            path:"#"
+            path:"/#/yangjiu"
           },
           {
             name:"整箱购",
-            path:"#"
+            path:"/#/zhengxianggou"
           },
           {
             name:"老酒",
-            path:"#"
+            path:"/#/laojiu"
           },
           {
             name:"清仓特卖",
-            path:"#"
+            path:"/#/baijiu"
           },
           {
             name:"海外直采",
-            path:"#"
+            path:"/#/putaojiu"
           },
           {
             name:"精美大坛",
-            path:"#"
+            path:"/#/datan"
           },
           {
             name:"红酒整箱",
-            path:"#"
+            path:"/#/zhengxianggou"
           },
           {
             name:"值得买",
-            path:"#"
+            path:"/#/yangjiu"
           },
           {
             name:"销量排行",
-            path:"#"
+            path:"/#/laojiu"
           },
           {
             name:"礼尚往来",
-            path:"#"
+            path:"/#/putaojiu"
           }
         ]
       }
@@ -84,7 +84,6 @@ export default {
 
     html,body{
     font-size:26.67vw;
-   
     height:100%;
 }
 /*头部*/
@@ -124,7 +123,10 @@ export default {
 }
 
 /*主体*/
-
+.sortbox{
+  height:100%;
+  background: #fff;
+}
 .main{
     display: flex;
     flex-wrap: wrap;

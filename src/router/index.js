@@ -55,6 +55,46 @@ const router = new VueRouter({
             }
         },
         {
+            path:"/putaojiu",
+            name:"putaojiu",
+            component:()=>import("@pages/putaojiu"),
+            meta:{
+                flag:false
+            }
+        },
+        {
+            path:"/zhengxianggou",
+            name:"zhengxianggou",
+            component:()=>import("@pages/zhengxianggou"),
+            meta:{
+                flag:false
+            }
+        },
+        {
+            path:"/yangjiu",
+            name:"yangjiu",
+            component:()=>import("@pages/yangjiu"),
+            meta:{
+                flag:false
+            }
+        },
+        {
+            path:"/laojiu",
+            name:"laojiu",
+            component:()=>import("@pages/laojiu"),
+            meta:{
+                flag:false
+            }
+        },
+        {
+            path:"/datan",
+            name:"datan",
+            component:()=>import("@pages/datan"),
+            meta:{
+                flag:false
+            }
+        },
+        {
             path:"/search",
             name:"search",
             component:()=>import("@pages/search"),

@@ -15,3 +15,4 @@ export const searchApi = (str)=>http({
         str
     }
 })
+//http://m.gjw.com/BtCApi/Search/GetSearchStr?str=j

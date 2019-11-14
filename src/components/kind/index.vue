@@ -2,16 +2,16 @@
     <div>
         <!-- 图片-分类 -->
         <div class="img-box">
-            <img src="https://img06.jiuxian.com/bill/2019/1028/944166396b084d3092bb07bc245ecea1.jpg" alt="">
-            <img src="https://img08.jiuxian.com/bill/2019/1028/2cf625e984744131a76554a2599967b4.jpg" alt="">
-            <img src="https://img06.jiuxian.com/bill/2019/1028/844bd58f910a4bf49b26da280d6a29ef.jpg" alt="">
-            <img src="https://img08.jiuxian.com/bill/2019/1028/30333095dee1471dadef2f24e5f8478c.jpg" alt="">
-            <img src="https://img08.jiuxian.com/bill/2019/1028/1adaf3453038487c841e0d9b6d4a8f1f.jpg" alt="">
-            <img src="https://img07.jiuxian.com/bill/2019/1104/4e4582f5f44e4f33bd4a3ded023f6924.jpg" alt="">
-            <img src="https://img10.jiuxian.com/bill/2019/1028/d35c2c43dbb64d9e871834663885bc20.jpg" alt="">
-            <img src="https://img10.jiuxian.com/bill/2019/1028/407bc61118014dc281e285350dd65016.jpg" alt="">
-            <img src="https://img10.jiuxian.com/bill/2019/1028/ff6b5545c1234fedb544b7647a87f008.jpg" alt="">
-            <img src="https://img06.jiuxian.com/bill/2019/1028/f09cccdfab8843a394bd98533a0779b4.jpg" alt="">
+            <router-link tag="img" to="/baijiu" src="https://img06.jiuxian.com/bill/2019/1028/944166396b084d3092bb07bc245ecea1.jpg" alt=""></router-link>
+            <router-link tag="img" to="/putaojiu" src="https://img08.jiuxian.com/bill/2019/1028/2cf625e984744131a76554a2599967b4.jpg" alt=""></router-link>
+            <router-link tag="img" to="/yangjiu" src="https://img06.jiuxian.com/bill/2019/1028/844bd58f910a4bf49b26da280d6a29ef.jpg" alt=""></router-link>
+            <router-link tag="img" to="/datan" src="https://img08.jiuxian.com/bill/2019/1028/30333095dee1471dadef2f24e5f8478c.jpg" alt=""></router-link>
+            <router-link tag="img" to="/zhengxianggou" src="https://img08.jiuxian.com/bill/2019/1028/1adaf3453038487c841e0d9b6d4a8f1f.jpg" alt=""></router-link>
+            <router-link tag="img" to="/baijiu" src="https://img07.jiuxian.com/bill/2019/1104/4e4582f5f44e4f33bd4a3ded023f6924.jpg" alt=""></router-link>
+            <router-link tag="img" to="/putaojiu" src="https://img10.jiuxian.com/bill/2019/1028/d35c2c43dbb64d9e871834663885bc20.jpg" alt=""></router-link>
+            <router-link tag="img" to="/yangjiu" src="https://img10.jiuxian.com/bill/2019/1028/407bc61118014dc281e285350dd65016.jpg" alt=""></router-link>
+            <router-link tag="img" to="/datan" src="https://img10.jiuxian.com/bill/2019/1028/ff6b5545c1234fedb544b7647a87f008.jpg" alt=""></router-link>
+            <router-link tag="img" to="/zhengxianggou" src="https://img06.jiuxian.com/bill/2019/1028/f09cccdfab8843a394bd98533a0779b4.jpg" alt=""></router-link>
         </div>
 
         <!-- 柳岩 -->

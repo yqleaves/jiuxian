@@ -17,23 +17,6 @@
 
     <div class="box">
       <span v-for="(items,index1) in arrs" :key="index1">{{items}}</span>
-      <!-- <span>茅台</span>
-      <span>酒鬼酒</span>
-      <span>五粮液</span>
-      <span>剑南春</span>
-      <span>泸州老窖</span>
-      <span>汾酒</span>
-      <span>洋河</span>
-      <span>水井坊</span>
-      <span>古井贡</span>
-      <span>郎酒</span>
-      <span>西风</span>
-      <span>董酒</span>
-      <span>茉莉花</span>
-      <span>奔富</span>
-      <span>马爹利</span>
-      <span>拉菲</span>
-      <span>人头马</span> -->
     </div>
 
     <div class="remen">
@@ -45,28 +28,32 @@
 
 <script>
 import { searchApi } from "@api/baijiu";
+import {throttle} from "@utils/jieliu";
+//var throttleCallback = throttle()
 export default {
   name: "search",
   data() {
     return {
       value: "",
-      list: [],
+      //list: [],
       str: [],
       arrs:["国台","茅台","酒鬼酒","五粮液","剑南春","泸州老窖",
               "汾酒","洋河","水井坊","郎酒","西风","董酒","茉莉花","奔富","马爹利","拉菲","人头马"
             ]
     };
   },
+  
   watch: {
-    async value(newVal) {
-      let data = await searchApi(newVal);
-      console.log(data);
-      this.list = data.data ? data.data[0 - 99] : [];
-      ///console.log(list.Keyword)
-      for (var i = 0; i < data.data.length; i++) {
-        this.str.push(data.data[i].Keyword);
-      }
-      console.log(this.str);
+     async value(newVal) {
+      throttle(async ()=>{
+          let data = await searchApi(newVal);
+          for (var i = 0; i < data.data.length; i++) {
+          this.str.push(data.data[i].Keyword);
+          }
+      },300)
+      //this.list = data.data ? data.data[0 - 99] : [];
+      
+      
     }
   }
 };
@@ -82,17 +69,16 @@ body {
 .box1 {
   height: auto;
   font-size: 0.16rem;
-  margin-left:0.2rem;
-  line-height:0.4rem;
-  border-bottom:1px solid #e5e5e5;
-  color:#333;
-  padding:0.1rem 0 ;
-
+  margin-left: 0.2rem;
+  line-height: 0.4rem;
+  border-bottom: 1px solid #e5e5e5;
+  color: #333;
+  padding: 0.1rem 0;
 }
-.box2{
-  margin-top:0.4rem;
-  width:100%;
-  height:100%;
+.box2 {
+  margin-top: 0.4rem;
+  width: 100%;
+  height: 100%;
 }
 
 .search {

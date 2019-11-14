@@ -34,7 +34,7 @@ export default {
         // console.log(data);
     },
     mounted(){
-        this.$refs.yscroll.handlepullingDown();
+        //this.$refs.yscroll.handlepullingDown();
         // this.$refs.yscroll.handlepullingUp();
     }
     
