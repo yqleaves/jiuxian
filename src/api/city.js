@@ -1,6 +1,8 @@
 import http from "@utils/request";
 
-export const cityApi = ()=>http({
+// 城市列表接口
+export const cityApi = _=>http({
     method:"get",
-    url:"/getIsReleaseCity"
+    url:"/api/cityList"
 })
+// http://39.97.33.178/api/cityList

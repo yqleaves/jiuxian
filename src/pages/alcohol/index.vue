@@ -2,14 +2,16 @@
 
     <div class="alcohol">
         <Head/>
-        <Scroll ref="yscroll">
+        <Scroll ref="scroll">
         <div class="content">
             <Picture/>
             <Kind/>
             <Shop/>
             <List/>
         </div>
-       </Scroll>
+        </Scroll>
+       
+       
         <!-- <Loading/> -->
     </div>
    
@@ -49,5 +51,8 @@ export default {
 <style lang="scss">
     .alcohol{
         height: 100%; overflow: auto; width:100%; background: #f5f5f5; padding-bottom:.42rem;
+    }
+    .content{
+         overflow: auto; width: 100%;
     }
 </style>

@@ -33,9 +33,8 @@ export default {
         // 上啦加载更多
         handlepullingUp(callback){
             this.scroll.on("pullingUp",()=>{
-                console.log(111)
                 callback();
-                
+                console.log(111)
             })
         },
         handlefinishPullUp(){
@@ -44,7 +43,8 @@ export default {
             //重新计算better-scroll
             this.scroll.refresh();
         }
-    }
+    },
+    
 }
 </script>
 

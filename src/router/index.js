@@ -69,6 +69,14 @@ const router = new VueRouter({
             meta:{
                 flag:false
             }
+        },
+        {
+            path:"/clear",
+            name:"clear",
+            component:()=>import("@pages/clear"),
+            meta:{
+                flag:false
+            }
         }
         
     ]
@@ -76,7 +84,7 @@ const router = new VueRouter({
 
 router.beforeEach((to,from,next)=>{
     if(to.path !="/login" && to.meta.requiredAuth){
-        if(localStorage.getItem("token")){
+        if(localStorage.getItem("Authorization")){
             next();
         }else{
             next({name:"login",params:{to:to.path}});

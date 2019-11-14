@@ -1,6 +1,6 @@
 <template>
     <div class="head">
-            <router-link to="/city" tag="i"></router-link>
+        <router-link to="/city" tag="p"></router-link>
             <div class="search">
                 <b></b>
                 <span>硬核11.11 壕掷千万补贴</span>
@@ -22,7 +22,7 @@
     justify-content: space-around;
     align-items: center;
 }
-.head i{
+.head p{
     width: .57rem;
     height: .27rem;
     background: url(https://m.jiuxian.com/mjava_statics/images/home/jx-sprite.png) no-repeat;

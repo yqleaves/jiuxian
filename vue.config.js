@@ -8,11 +8,14 @@ module.exports = {
                 target:"https://m.jiuxian.com",
                 changeOrigin:true
             },
-            "/":{
-                target:"https://jc.jiuxian.com",
+            // "/":{
+            //     target:"https://jc.jiuxian.com",
+            //     changeOrigin:true
+            // },
+            "/api":{
+                target:"http://39.97.33.178",
                 changeOrigin:true
             },
-            
         },
        
     },

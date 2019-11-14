@@ -7,19 +7,19 @@
         </div>
         <div class="user">
             <i></i>
-            <input type="text" placeholder="用户名/邮箱/手机号">
+            <input type="text" v-model="loginForm.username" placeholder="用户名/邮箱/手机号">
             <!-- <span>用户名/邮箱/手机号</span> -->
         </div>
         <div class="user password">
             <i></i>
-            <input type="password" placeholder="密码">
+            <input type="password" v-model="loginForm.password"  placeholder="密码">
         </div>
         <div class="user yzm">
             <i></i>
             <input type="password" placeholder="请依次点击">
         </div>
 
-        <div class="sign">
+        <div class="sign" @click="login">
             立即登录
         </div>
         
@@ -40,9 +40,47 @@
     </div>
 </template>
 
+
 <script>
+import axios from "@utils/request";
+import { mapMutations } from 'vuex';
 export default {
-    name:"LoginMain"
+    name:"LoginMain",
+  data () {
+    return {
+      loginForm: {
+        username: '',
+        password: ''
+      }
+    };
+  },
+ 
+  methods: {
+    ...mapMutations(['changeLogin']),
+    login () {
+      let _this = this;
+      if (this.loginForm.username === '' || this.loginForm.password === '') {
+        alert('账号或密码不能为空');
+      } 
+      else {
+        axios({
+          method: 'post',
+          url: '/login',
+          data: _this.loginForm
+        }).then(res => {
+          console.log(res.data);
+          _this.userToken = 'Bearer ' + res.data.data.body.token;
+          // 将用户token保存到vuex中
+          _this.changeLogin({ Authorization: _this.userToken });
+          _this.$router.push('/mine');
+          alert('登陆成功');
+        }).catch(error => {
+          alert('账号或密码错误');
+          console.log(error);
+        });
+      }
+    }
+  }
 }
 </script>
 

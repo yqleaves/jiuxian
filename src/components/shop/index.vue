@@ -1,6 +1,6 @@
 <template>
      <div class="kind-box">
-         <Scroll>
+         <Scroll ref="shopScroll">
          <div class="kind">
             <ul class="kind-box">
                 <li v-for="(item,index) in shopList" :key="index"><a href="">
@@ -62,7 +62,8 @@ export default {
             console.log(data)
             this.shopList = data.killProList                                                              
         }
-    }
+    },
+    
 }
 </script>
 

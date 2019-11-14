@@ -1,11 +1,11 @@
 <template>
-  <Scroll ref="scroll">
+<!-- <Scroll ref="scroll"> -->
     <div class="list" >
         <!-- 爆款 -->
         <div class="title">
             爆款推荐
         </div>
-      
+              
             <div class="recommend">
                 <li v-for="(item,index) in recommendList" :key="index">
                     <div class="icon">
@@ -27,9 +27,9 @@
                     </router-link>
                 </li>
             </div>
-       
+        
     </div>
-     </Scroll>
+<!-- </Scroll> -->
     <!-- </div> -->
 </template>
 
@@ -63,14 +63,19 @@ export default {
         }
        
     },
-    mounted(){
-        this.$refs.scroll.handlepullingUp(()=>{
-            console.log(111)
-            var index = 1;
-            this.handleRecommendList(this.index++)
-        })
-        // this.$refs.scroll.handleScroll();
-    }
+    // mounted(){
+        
+    //     this.$refs.scroll.handlepullingUp(async ()=>{
+    //     let n = parseInt((Math.random()*6)+1);
+    //     //  let arr = [10,1,20,40,50,55,59]
+    //     let data = await recommendListApi(n);
+    //     console.log(n)
+    //     this.recommendList = [...this.clearList,...data.promoList];
+    //     sessionStorage.setItem("recommendList",JSON.stringify(data.promoList))
+    //     this.$refs.scroll.handlefinishPullUp();
+    //     })
+    //     // this.$refs.scroll.handleScroll();
+    // }
  
 
     
@@ -92,10 +97,12 @@ export default {
     border-bottom: 1px solid #f1f1f1;
 }
 .list{
-    margin-top: .1rem;
+    overflow: auto;
+    height: 100%;
+    width: 100%;
 }
 .recommend{
-    width: 100%;
+    // width: 100%;
     height: 100%;
     display: flex;
     justify-content: space-between;
