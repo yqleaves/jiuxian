@@ -1,6 +1,6 @@
 <template>
      <div class="kind-box">
-         <Scroll>
+         <Scroll ref="shopScroll">
          <div class="kind">
             <ul class="kind-box">
                 <li v-for="(item,index) in shopList" :key="index"><a href="">
@@ -32,7 +32,6 @@ export default {
             image:[
                 {
                     img:"https://img10.jiuxian.com/bill/2019/0821/fb176ffae5b941a2aa0a38e88607a278.jpg"
-                    
                 },
                 {
                     img:"https://img09.jiuxian.com/bill/2019/1029/575a815f638540bcaa911d7380964897.jpg"
@@ -60,10 +59,11 @@ export default {
     methods:{
         async handleGetshopList(tabnum){
             let data = await shopListApi(tabnum);
-            // console.log(data)
+            console.log(data)
             this.shopList = data.killProList                                                              
         }
-    }
+    },
+    
 }
 </script>
 

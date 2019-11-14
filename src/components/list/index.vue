@@ -1,16 +1,23 @@
 <template>
-  <Scroll ref="scroll">
+<!-- <Scroll ref="scroll"> -->
     <div class="list" >
         <!-- 爆款 -->
         <div class="title">
             爆款推荐
         </div>
-      
+              
             <div class="recommend">
                 <li v-for="(item,index) in recommendList" :key="index">
-                    <!-- <i >{{item.promo.name}}</i> -->
+                    <div class="icon">
+                        <i v-for="(child,i) in item.promo" :key="i" :style="{'background':'child.backcolor'}">
+                            {{child.name}}
+                        </i>
+                    </div>
+                    
+                    <!-- <i>{{item.promo[1].name}}</i> -->
                     <router-link :to="'/detail?id='+item.commonProductInfo.brandId+'&name='+item.commonProductInfo.pname+
-                    '&img='+item.commonProductInfo.imgPath" >
+                    '&img='+item.commonProductInfo.imgPath+'&price='+item.commonProductInfo.actPrice" >
+                        
                         <img :src="item.commonProductInfo.imgPath" alt="">
                         <span class="item-title">{{item.commonProductInfo.pname}}</span>
                         <span class="item-price">
@@ -20,9 +27,9 @@
                     </router-link>
                 </li>
             </div>
-       
+        
     </div>
-     </Scroll>
+<!-- </Scroll> -->
     <!-- </div> -->
 </template>
 
@@ -50,19 +57,25 @@ export default {
     methods:{
         async handleRecommendList(pageNum){
              let data = await recommendListApi(pageNum);
-             this.recommendList = [...this.recommendList,...data.promoList];
-             console.log(this.recommendList[0].promo)
+             console.log(data)
+            // console.log(data.promoList[0].promo)
+             this.recommendList = data.promoList;
         }
        
     },
-    mounted(){
-        this.$refs.scroll.handlepullingUp(()=>{
-            console.log(111)
-            var index = 1;
-            this.handleRecommendList(this.index++)
-        })
-        // this.$refs.scroll.handleScroll();
-    }
+    // mounted(){
+        
+    //     this.$refs.scroll.handlepullingUp(async ()=>{
+    //     let n = parseInt((Math.random()*6)+1);
+    //     //  let arr = [10,1,20,40,50,55,59]
+    //     let data = await recommendListApi(n);
+    //     console.log(n)
+    //     this.recommendList = [...this.clearList,...data.promoList];
+    //     sessionStorage.setItem("recommendList",JSON.stringify(data.promoList))
+    //     this.$refs.scroll.handlefinishPullUp();
+    //     })
+    //     // this.$refs.scroll.handleScroll();
+    // }
  
 
     
@@ -83,9 +96,13 @@ export default {
     font-size: .12rem;
     border-bottom: 1px solid #f1f1f1;
 }
-
-.recommend{
+.list{
+    overflow: auto;
+    height: 100%;
     width: 100%;
+}
+.recommend{
+    // width: 100%;
     height: 100%;
     display: flex;
     justify-content: space-between;
@@ -107,17 +124,32 @@ export default {
     min-height: 2rem;
     flex-direction: column;
 }
-.recommend li i{
-    background: #ff6266;
-    width: .54rem;
-    height: .16rem;
-    color: #fff;
-    text-align: center;
-    border-radius: 3px;
-    font-size: .12rem;
+.recommend li .icon{
+    width: 100%;
+    height: .1rem;
     position: absolute;
     top: 4px;
     left: 3px;
+    display: flex;
+    justify-content: flex-start;
+}
+.recommend li i{
+    background: #ff6266;
+    // width: .54rem;
+    height: .16rem;
+    color: #fff;
+    border-radius: 2px;
+    font-size: .12rem;
+    display: flex;
+    justify-content: center;
+    margin-right:.05rem;
+    padding: 0 .04rem;
+}
+.recommend li i:nth-of-type(3){
+    background: #c58cff;
+}
+.recommend li i:nth-of-type(2){
+    background: #5eaffe;
 }
 .recommend li a img{
     width: 1.65rem;
