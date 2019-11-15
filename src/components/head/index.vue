@@ -1,28 +1,17 @@
 <template>
-    <div class="head">
-        <router-link to="/city" tag="p"></router-link>
-            <div class="search" @click="handlesrarch()">
+   
     <div class="head-index">
         <i></i>
-            <div class="search">
+            <v-touch tag="div" class="search" @tap="handlesearch()">
                 <b></b>
                 <span>硬核11.11 壕掷千万补贴</span>
-            </div>
+            </v-touch>
             <router-link to="/city" tag="p">
             <van-icon tag="strong" name="arrow-down" />
             {{this.$store.state.city.nm}}
             </router-link>
         </div>
 </template>
-<script>
-export default {
-    methods:{
-        handlesrarch(){
-            this.$router.push("/search")
-        }
-    }
-}
-</script>
 
 <script>
 import Vue from 'vue';
@@ -30,11 +19,15 @@ import { Icon } from 'vant';
 
 Vue.use(Icon);
 export default {
-    
+    methods:{
+        handlesearch(){
+            this.$router.push("./search")
+        }
+    }
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
     
 /* header */
 .head-index{
