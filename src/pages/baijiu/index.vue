@@ -2,8 +2,8 @@
   <div>
     <!-- 头部 -->
     <div class="head">
-      <div class="left"  @click="handleback()"></div>
-      <input class="middle" type="text" placeholder="硬核11.11豪掷千万补贴" />
+      <div class="left" @click="handleback()"></div>
+      <input class="middle" type="text" placeholder="硬核11.11豪掷千万补贴" @click="handlesearch()" />
       <div class="fangdajing"></div>
       <div class="right"></div>
     </div>
@@ -11,10 +11,12 @@
     <div class="nav">
       <li class="list">综合</li>
       <li>销量</li>
-      <li>
-        价格
-        <span class="price"></span>
+      <li @click="upchange">
+        价格升序
+        <!-- <span class="price">
+        </span>-->
       </li>
+      <li @click="downchange">价格降序</li>
       <li>筛选</li>
     </div>
     <!-- 配送 -->
@@ -25,7 +27,15 @@
     </div>
     <!-- 主体 -->
     <div class="bigbox">
-      <div class="box" v-for="(item,index) in baijiuList" :key="index">
+      <router-link
+        v-for="(item,index) in baijiuList"
+        :key="index"
+        tag="div"
+        class="boxs"
+        :to="'/detail?id='+item.commonProductInfo.brandId+'&name='+item.commonProductInfo.pname+
+      '&img='+item.commonProductInfo.imgPath+'&price='+item.commonProductInfo.actPrice"
+      >
+        <!-- <div class="box" v-for="(item,index) in baijiuList" :key="index"> -->
         <img :src="item.commonProductInfo.imgPath" alt />
         <div class="box1">
           <p>{{item.commonProductInfo.pname}}</p>
@@ -35,7 +45,8 @@
           <span>99% 好评</span>
           <span>13553人 评论</span>
         </div>
-      </div>
+        <!-- </div> -->
+      </router-link>
     </div>
   </div>
 </template>
@@ -58,8 +69,21 @@ export default {
       //console.log(data);
       this.baijiuList = data.promoList;
     },
-    handleback(){
+    handleback() {
       this.$router.back();
+    },
+    handlesearch() {
+      this.$router.push("/search");
+    },
+    upchange() {
+      this.baijiuList.sort((a, b) => {
+        return a.commonProductInfo.jxPrice - b.commonProductInfo.jxPrice;
+      });
+    },
+    downchange() {
+      this.baijiuList.sort((a, b) => {
+        return b.commonProductInfo.jxPrice - a.commonProductInfo.jxPrice;
+      });
     }
   }
 };
@@ -68,7 +92,7 @@ export default {
 html,
 body {
   font-size: 26.67vw;
-   overflow-y: auto;
+  overflow-y: auto;
 }
 /*头部*/
 .head {
@@ -77,9 +101,9 @@ body {
   border-bottom: 1px solid #e4e4e4;
   display: flex;
   background: #fafafa;
-  position:fixed;
-  top:0;
-  left:0;
+  position: fixed;
+  top: 0;
+  left: 0;
 }
 .head .left {
   height: 0.4rem;
@@ -116,21 +140,21 @@ body {
   background: url(../../../public/img/listIcon.png) no-repeat 0 -45px;
   background-size: 100px 78px;
   margin-right: 0.1rem;
-  margin-top:0.03rem;
+  margin-top: 0.03rem;
 }
 /*导航*/
 .nav {
   height: 0.4rem;
   display: flex;
   font-size: 0.14rem;
-  margin-top:0.4rem;
+  margin-top: 0.4rem;
   background: #fff;
-  
 }
 .nav li {
   list-style: none;
   display: block;
-  width: 0.975rem;
+  -width: 0.975rem;
+  width: 20%;
   height: 0.4rem;
   text-align: center;
   line-height: 0.4rem;
@@ -174,38 +198,36 @@ body {
 }
 
 /* 主体 */
-.bigbox{
-   
-   width:100%;
-height:100%;
-    
+.bigbox {
+  width: 100%;
+  height: 100%;
 }
-.box {
+.boxs {
   height: 1.2rem;
   width: 100%;
   display: flex;
 }
-.box img {
+.boxs img {
   width: 1.1rem;
   height: 1.1rem;
   margin-top: 0.05rem;
 }
-.box .box1 {
+.boxs .box1 {
   width: 2.55rem;
   height: 1.2rem;
   margin-left: 0.1rem;
   font-size: 0.16rem;
   border-bottom: 1px solid #e8e8e8;
 }
-.box .box1 p:nth-of-type(1) {
+.boxs .box1 p:nth-of-type(1) {
   margin-top: 0.1rem;
-  width:2.4rem;
-  overflow:hidden;
+  width: 2.4rem;
+  overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
   font-size: 0.14rem;
 }
-.box .box1 .xianshi {
+.boxs .box1 .xianshi {
   font-size: 0.1rem;
   background: #ffa855;
   height: 0.14rem;
@@ -215,13 +237,13 @@ height:100%;
   border-radius: 0.02rem;
   margin: 0.05rem 0 0 0.05rem;
 }
-.box .box1 p:nth-of-type(2) {
+.boxs .box1 p:nth-of-type(2) {
   font-size: 0.14rem;
   color: red;
   font-weight: bold;
   margin-top: 0.1rem;
 }
-.box .box1 span:nth-of-type(1) {
+.boxs .box1 span:nth-of-type(1) {
   background: url(../../../public/img/listIcon.png) no-repeat -62px -15px;
   width: 0.38rem;
   height: 0.13rem;
@@ -229,12 +251,12 @@ height:100%;
   background-size: 1rem 0.7rem;
   margin-top: 0.1rem;
 }
-.box .box1 span:nth-of-type(2) {
+.boxs .box1 span:nth-of-type(2) {
   font-size: 0.12rem;
   color: #ccc;
   margin-left: 0.1rem;
 }
-.box .box1 span:nth-of-type(3) {
+.boxs .box1 span:nth-of-type(3) {
   font-size: 0.12rem;
   color: #ccc;
   margin-left: 0.05rem;

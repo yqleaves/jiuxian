@@ -18,7 +18,6 @@
             <i></i>
             <input type="password" placeholder="请依次点击">
         </div>
-
         <div class="sign" @click="login">
             立即登录
         </div>

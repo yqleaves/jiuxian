@@ -1,13 +1,21 @@
 <template>
     <div class="head">
         <router-link to="/city" tag="p"></router-link>
-            <div class="search">
+            <div class="search" @click="handlesrarch()">
                 <b></b>
                 <span>硬核11.11 壕掷千万补贴</span>
             </div>
         </div>
 </template>
-
+<script>
+export default {
+    methods:{
+        handlesrarch(){
+            this.$router.push("/search")
+        }
+    }
+}
+</script>
 <style lang="scss">
     
 /* header */

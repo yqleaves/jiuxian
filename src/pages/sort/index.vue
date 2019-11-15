@@ -4,7 +4,7 @@
     <Header title="选酒" icon />
     <!-- 搜索 -->
     <div class="sousuo">
-      <input type="text" placeholder="硬核11.11豪掷千万补贴" />
+      <input type="text" placeholder="硬核11.11豪掷千万补贴" @click="handleclick()"/>
       <div class="fangdajing"></div>
     </div>
     <!-- 主体 -->
@@ -75,6 +75,11 @@ export default {
             path:"/#/putaojiu"
           }
         ]
+      }
+    },
+    methods:{
+      handleclick(){
+        this.$router.push("/search")
       }
     }
 };

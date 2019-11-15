@@ -24,9 +24,12 @@
     </div>
 
     <!-- 主体 -->
-
-    <div class="box">
-      <a href="#" v-for="(item,index) in List" :key="index">
+  <van-pull-refresh v-model="isLoading" @refresh="onRefresh">
+    <div class="boxs">
+      <!-- <a href="#" v-for="(item,index) in List" :key="index"> -->
+        <router-link v-for="(item,index) in List" :key="index" tag="a" 
+        :to="'/detail?id='+item.commonProductInfo.brandId+'&name='+item.commonProductInfo.pname+
+          '&img='+item.commonProductInfo.imgPath+'&price='+item.commonProductInfo.actPrice">
         <div class="smallbox">
           <div class="pic">
             <img :src="item.commonProductInfo.imgPath" alt />
@@ -36,18 +39,26 @@
           <span>￥{{item.commonProductInfo.jxPrice}}</span>
           <span>点击购买</span>
         </div>
-      </a>
+        </router-link>
+      <!-- </a> -->
     </div>
+    </van-pull-refresh>
   </div>
 </template>
 
 <script>
 import { baijiuApi } from "@api/baijiu";
+import Vue from 'vue';
+import { PullRefresh } from 'vant';
+
+Vue.use(PullRefresh);
+
 export default {
   name: "datan",
   data() {
     return {
-      List: []
+      List: [],
+      isLoading: false
     };
   },
   created() {
@@ -61,6 +72,12 @@ export default {
     },
     handleback() {
       this.$router.back();
+    },
+    onRefresh() {
+      setTimeout(() => {
+        //this.$toast('刷新成功');
+        this.isLoading = false;
+      }, 500);
     }
   }
 };
@@ -148,29 +165,29 @@ body {
 
 /* 主体 */
 
-.box {
+.boxs {
   display: flex;
   flex-wrap: wrap;
   align-content: flex-start;
   justify-content: space-around;
 }
-.box .smallbox {
+.boxs .smallbox {
   width: 1.7rem;
   height: 2.47rem;
   background: #fff;
   margin-top: 0.1rem;
   font-size: 0.16rem;
 }
-.box .smallbox .pic {
+.boxs .smallbox .pic {
   width: 1.76rem;
   height: 1.47rem;
 }
-.box .smallbox .pic img {
+.boxs .smallbox .pic img {
   height: 1.4rem;
   width: 1.4rem;
   margin-left: 0.05rem;
 }
-.box .smallbox p:nth-of-type(1) {
+.boxs .smallbox p:nth-of-type(1) {
   width: 1.6rem;
   padding: 0 0.05rem;
   font-size: 0.12rem;
@@ -181,7 +198,7 @@ body {
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-.box .smallbox p:nth-of-type(2) {
+.boxs .smallbox p:nth-of-type(2) {
   color: red;
   width: 1.6rem;
   padding: 0 0.05rem;
@@ -189,7 +206,7 @@ body {
   margin-left: 0.05rem;
   margin-top: 0.06rem;
 }
-.box .smallbox span:nth-of-type(1) {
+.boxs .smallbox span:nth-of-type(1) {
   font-size: 0.14rem;
   color: red;
   font-weight: bold;
@@ -197,7 +214,7 @@ body {
   display: inline-block;
   margin-left: 0.1rem;
 }
-.box .smallbox span:nth-of-type(2) {
+.boxs .smallbox span:nth-of-type(2) {
   width: 0.64rem;
   height: 0.24rem;
   font-size: 0.12rem;
