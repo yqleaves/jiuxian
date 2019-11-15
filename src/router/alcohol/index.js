@@ -5,5 +5,6 @@ export default {
     meta:{
         flag:true,
         requiredAuth:false,
+        title:"酒仙网",
     }
 }

@@ -13,8 +13,7 @@
                             {{child.name}}
                         </i>
                     </div>
-                    
-                    <!-- <i>{{item.promo[1].name}}</i> -->
+                   
                     <router-link :to="'/detail?id='+item.commonProductInfo.brandId+'&name='+item.commonProductInfo.pname+
                     '&img='+item.commonProductInfo.imgPath+'&price='+item.commonProductInfo.actPrice" >
                         
@@ -54,12 +53,22 @@ export default {
         // let data = await recommendListApi(1165);
         // console.log(data)
     },
+    activated(){
+        console.log("执行了")
+    },
     methods:{
         async handleRecommendList(pageNum){
              let data = await recommendListApi(pageNum);
-             console.log(data)
-            // console.log(data.promoList[0].promo)
+             
              this.recommendList = data.promoList;
+             console.log(this.recommendList);
+            //  sessionStorage.setItem("this.recommendList",JSON.stringify(data.promoList));
+
+            //  if(sessionStorage.getItem(this.recommendList)){
+            //      this.recommendList = JSON.parse(sessionStorage.getItem(this.recommendList))
+            //  }else{
+            //      this.recommendList = data.promoList;
+            //  }
         }
        
     },
@@ -77,14 +86,12 @@ export default {
     //     // this.$refs.scroll.handleScroll();
     // }
  
-
-    
-    
+ 
 }
 </script>
 
 
-<style lang="scss">
+<style lang="scss" scoped>
     /* 爆款推荐 */
 .title{
     width: 100%;
@@ -100,6 +107,7 @@ export default {
     overflow: auto;
     height: 100%;
     width: 100%;
+    background: #f5f5f5;
 }
 .recommend{
     // width: 100%;

@@ -2,14 +2,20 @@
      <div class="kind-box">
          <Scroll ref="shopScroll">
          <div class="kind">
+             
             <ul class="kind-box">
-                <li v-for="(item,index) in shopList" :key="index"><a href="">
-                    <img :src="item.proImg" alt="">
-                    <span class="name">{{item.proName}}</span>
-                    <span class="price">￥{{item.proPrice.toFixed(2)}}</span>
-                    <span class="o-price">￥{{item.jxPrice.toFixed(2)}}</span>
-                </a></li>
+                <li v-for="(item,index) in shopList" :key="index">
+                    <router-link :to="'/detail/?id='+item.actTypeId+'&name='+item.proName+
+                    '&img='+item.proImg+'&price='+item.proPrice" href="">
+                        <img :src="item.proImg" alt="">
+                        <span class="name">{{item.proName}}</span>
+                        <span class="price">￥{{item.proPrice.toFixed(2)}}</span>
+                        <span class="o-price">￥{{item.jxPrice.toFixed(2)}}</span>
+                    </router-link>
+                </li>
             </ul>
+           
+            
         </div>
         </Scroll>
 
@@ -23,6 +29,7 @@
 </template>
 
 <script>
+import {recommendListApi} from "@api/alcohol";
 import {shopListApi} from "@api/alcohol";
 export default {
     name:"Shop",
@@ -60,7 +67,15 @@ export default {
         async handleGetshopList(tabnum){
             let data = await shopListApi(tabnum);
             console.log(data)
-            this.shopList = data.killProList                                                              
+            this.shopList = data.killProList 
+            
+            //  sessionStorage.setItem("this.shopList",JSON.stringify(data.killProList));
+
+            //  if(sessionStorage.getItem(this.shopList)){
+            //      this.shopList = JSON.parse(sessionStorage.getItem(this.shopList))
+            //  }else{
+            //      this.shopList = data.killProList;
+            //  }
         }
     },
     

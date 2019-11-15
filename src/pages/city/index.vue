@@ -6,7 +6,9 @@
             <div class="city-list-item" v-for="(item,index) in cityList" :key="index">
                 <div class="city-title">{{item.index}}</div>
                 <div class="city-name">
-                    <div class="city-name-item" v-for="child in item.list" :key="child.id">{{child.nm}}</div>
+                    <v-touch tag="div" class="city-name-item" v-for="child in item.list" 
+                    :key="child.id" @tap="handleCityTo(child)">
+                        {{child.nm}}</v-touch>
                 </div>
             </div>
 
@@ -45,6 +47,10 @@ export default {
             console.log(t)
 
             this.$refs.city.scrollTop = t
+        },
+        handleCityTo(child){
+            this.$router.push("/alcohol")
+            this.$store.commit("city/handleUpdateCity",child)
         }
     }
     

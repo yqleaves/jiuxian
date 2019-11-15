@@ -85,12 +85,12 @@ export default {
 };
 </script>
 
-<style>
-
-    html,body{
-    font-size:26.67vw;
-    height:100%;
-}
+<style lanng="scss" scoped>
+/* 
+  html,body{
+      font-size:26.67vw;
+      height:100%;
+  } */
 /*头部*/
 
 /*搜索*/
@@ -137,6 +137,7 @@ export default {
     flex-wrap: wrap;
     align-content: flex-start;
     background: #fff;
+    justify-content: space-around;
     height:100%;
 }
 .main li{

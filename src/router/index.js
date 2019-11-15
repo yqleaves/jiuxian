@@ -43,7 +43,8 @@ const router = new VueRouter({
             name:"sort",
             component:()=>import("@pages/sort"),
             meta:{
-                flag:false
+                flag:false,
+                title:"选酒"
             }
         },
         {
