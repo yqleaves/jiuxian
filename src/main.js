@@ -4,8 +4,10 @@ import router from './router'
 import store from './store'
 import "@common/components/index"
 import VueTouch from "vue-touch";
+import VueLazyload from 'vue-lazyload'
 import "./lib/loading/index"
 
+Vue.use(VueLazyload)
 Vue.use(VueTouch,{name:"v-touch"})
 
 

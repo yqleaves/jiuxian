@@ -12,14 +12,23 @@
                 <i class="icon3"></i>
             </li>
         </ul>
-        <a class="addCart">加入购物车</a>
+        <a class="addCart" @click="handleAddCart()">加入购物车</a>
         <a class="buy">立即购买</a>
     </div>
 </template>
 
 <script>
+import Vue from 'vue';
+import { Toast } from 'vant';
+
+Vue.use(Toast);
 export default {
-    
+     methods:{
+         handleAddCart(){
+             Toast('加入购物车成功!');
+         }
+        
+     }
 }
 </script>
 

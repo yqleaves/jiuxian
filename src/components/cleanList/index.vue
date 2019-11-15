@@ -52,6 +52,7 @@ export default {
         this.clearList = [...this.clearList,...data.goodsCate.list];
         sessionStorage.setItem("clearList",JSON.stringify(data.goodsCate.list))
         this.$refs.cleanScroll.handlefinishPullUp();
+        
      })
     }
 }

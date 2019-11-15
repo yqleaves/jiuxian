@@ -82,14 +82,15 @@
             <div class="count">
                 <span>数量</span>
                 <div class="count-btn">
-                    <i class="sub">-</i>
-                    <input type="text" value="1">
-                    <i class="push">+</i>
+                    <v-touch tag="i" class="sub" @tap="handleReduce()">-</v-touch>
+                    <!-- <input type="text" value="1"> -->
+                    <div class="input">{{num}}</div>
+                    <v-touch tag="i" class="push" @tap="handleAdd()">+</v-touch>
                 </div>
             </div>
             <div class="local">
                 <span>送至</span>
-                <div class="city">
+                <div class="city" @tap="handleChoose()">
                     <b>北京</b>
                     <b>北京市</b>
                     <b>东城区</b>
@@ -104,34 +105,49 @@
                 </div>
             </div>
         </div>
-
+        
     </div>
 </template>
 
 <script>
 import Swiper from "swiper"
+import {mapState} from "vuex"
 export default {
-    props:{
-        img:{
-            type:String
-        },
-        name:{
-            type:String
-        },
-        price:{
-            type:String
+   props:{
+       img:{
+           type: String,
+       },
+       name:{
+           type: String,
+       },
+       price:{
+           type: String,
+       }
+   },
+    data(){
+        return{ 
+            list:[],
+            shop:[],
+            id:""
         }
-        
     },
+    // created(){
+    //     this.id = this.$route.params.id;
+    //     if(this.id<=9){
+    //          this.list = JSON.parse(sessionStorage.getItem("this.recommendList"))[this.id]
+    //          console.log(this.id)
+    //     }else{
+    //         this.list = JSON.parse(sessionStorage.getItem("this.shopList"))[this.id]
+    //     }
+       
+        
+    //     // console.log(this.list.commonProductInfo)
+    // },
     mounted(){
         var swiper = new Swiper('.swiper-container', {
             spaceBetween: 30,
             centeredSlides: true,
             direction: 'horizontal',
-            // loop: true,
-            // slidesPerView : 'auto',
-            // loopedSlides :8,
-            // effect: "fade",//淡入淡出效果
             fadeEffect: {
                 crossFade: true,
             },
@@ -141,7 +157,24 @@ export default {
                 clickable: true,
             },
         });
+    },
+    methods:{
+        handleReduce(){
+             this.$store.commit("det/handleNumReduce")
+             console.log(1)
+        },
+        handleAdd(){
+             this.$store.commit("det/handleNumAdd")
+        }
+    },
+    computed:{
+        ...mapState({
+             num:state=>state.det.num
+        })
+       
     }
+  
+   
 }
 </script>
 
@@ -393,11 +426,12 @@ export default {
     justify-content: space-between;
     align-items: center;
 }
-.box .count .count-btn input{
+.box .count .count-btn .input{
     width: .2rem;
     color:#666;
     height: 100%;
     display: flex;
+    font-size: .12rem;
     text-align: center;
     justify-content: center;
     align-items: center;

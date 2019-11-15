@@ -84,8 +84,8 @@ export default {
 }
 </script>
 
-<style lang="scss">
-    .main{
+<style lang="scss" scoped>
+.main{
     margin-top: .15rem;
     height: 100%;
     padding: .4rem .3rem 0;
@@ -130,10 +130,9 @@ export default {
     height: 100%;
     display: flex;
     padding-top: .03rem;
+    font-size: .14rem;
 }
-.main .login input::placeholder{
-    font-size: .12rem;
-}
+
 .main .user i{
     background: url(https://misc.jiuxian.com/m_user/images/loginIcon.png) no-repeat;
     width: .2rem;
