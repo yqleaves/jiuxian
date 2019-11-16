@@ -6,6 +6,10 @@ import "@common/components/index"
 import VueTouch from "vue-touch";
 import VueLazyload from 'vue-lazyload'
 import "./lib/loading/index"
+// import VueCookies from 'vue-cookies'
+
+// Vue.use(VueCookies);
+ 
 
 Vue.use(VueLazyload)
 Vue.use(VueTouch,{name:"v-touch"})

@@ -9,7 +9,7 @@
           <img src="https://misc.jiuxian.com/m_user/images/usercenter/userPhoto.png" alt />
         </div>
         <div class="order">
-          <span>jxx456852</span>
+          <span>{{user}}</span>
           <!-- <span>
             立享CLUB会员
             <i></i>
@@ -46,75 +46,79 @@
     <!-- 主体 -->
 
     <div class="box">
-      <li>
-        <a href="#">
-          <img src="https://misc.jiuxian.com/m_user/images/usercenter/order.png  " alt />
-          <span>全部订单</span>
-        </a>
+      <li v-for="(item,index) in list" :key="index">
+        <img :src="item.img" alt="">
+        <span>{{item.name}}</span>
       </li>
-      <li>
-        <a href="#">
-          <img src="https://misc.jiuxian.com/m_user/images/usercenter/cart.png    " alt />
-          <span>购物车</span>
-        </a>
-      </li>
-      <li>
-        <a href="#">
-          <img src="https://misc.jiuxian.com/m_user/images/usercenter/exchange.png  " alt />
-          <span>去兑换</span>
-        </a>
-      </li>
-      <li>
-        <a href="#">
-          <img src="https://misc.jiuxian.com/m_user/images/usercenter/coupon.png  " alt />
-          <span>我的优惠券</span>
-        </a>
-      </li>
-      <li>
-        <a href="#">
-          <img src="https://misc.jiuxian.com/m_user/images/usercenter/history.png   " alt />
-          <span>浏览历史</span>
-        </a>
-      </li>
-      <li>
-        <a href="#">
-          <img src="https://misc.jiuxian.com/m_user/images/usercenter/wallet.png   " alt />
-          <span>我的钱包</span>
-        </a>
-      </li>
-      <li>
-        <a href="#">
-          <img src="https://misc.jiuxian.com/m_user/images/usercenter/collect.png   " alt />
-          <span>我的收藏</span>
-        </a>
-      </li>
-      <li>
-        <a href="#">
-          <img src="https://misc.jiuxian.com/m_user/images/usercenter/address.png   " alt />
-          <span>地址管理</span>
-        </a>
-      </li>
-      <li>
-        <a href="#">
-          <img src="https://misc.jiuxian.com/m_user/images/usercenter/unreceived-icon.png   " alt />
-          <span>待领取</span>
-        </a>
-      </li>
-      <li>
-        <a href="#">
-          <img src="https://misc.jiuxian.com/m_user/images/usercenter/safe.png   " alt />
-          <span>账户安全</span>
-        </a>
-      </li>
+      
     </div>
 
-    <a href="#" class="btn">退出登录</a>
+    <div @click="handledel()" class="btn">退出登录</div>
   </div>
 </template>
 
 <script>
+import {delCookie,getCookie} from '../../utils/cookie'
 export default {
-  name: "mine"
+  name: "mine",
+  data(){
+    return {
+      list:[
+        {
+          img:"https://misc.jiuxian.com/m_user/images/usercenter/order.png",
+          name:"全部订单"
+        },
+        {
+          img:"https://misc.jiuxian.com/m_user/images/usercenter/cart.png",
+          name:"购物车"
+        },
+        {
+          img:"https://misc.jiuxian.com/m_user/images/usercenter/exchange.png",
+          name:"去兑换"
+        },
+        {
+          img:"https://misc.jiuxian.com/m_user/images/usercenter/coupon.png",
+          name:"我的优惠券"
+        },
+        {
+          img:"https://misc.jiuxian.com/m_user/images/usercenter/history.png",
+          name:"浏览历史"
+        },
+        {
+          img:"https://misc.jiuxian.com/m_user/images/usercenter/wallet.png",
+          name:"我的钱包"
+        },
+        {
+          img:"https://misc.jiuxian.com/m_user/images/usercenter/collect.png",
+          name:"我的收藏"
+        },
+        {
+          img:"https://misc.jiuxian.com/m_user/images/usercenter/address.png",
+          name:"地址管理"
+        },
+        {
+          img:"https://misc.jiuxian.com/m_user/images/usercenter/unreceived-icon.png",
+          name:"待领取"
+        },
+        {
+          img:"https://misc.jiuxian.com/m_user/images/usercenter/safe.png",
+          name:"账户安全"
+        }
+      ],
+      user:''
+    }
+  },
+  created(){
+    this.user = getCookie("name")
+  },
+  methods:{
+    handledel(){
+        delCookie("token");
+        delCookie("name");
+        delCookie("urlPic");
+        this.$router.push("/login")
+    }
+  }
 };
 </script>
 

@@ -20,6 +20,10 @@ module.exports = {
                 target:"http://39.97.33.178",
                 changeOrigin:true
             },
+            "/users":{
+                target:"http://10.60.13.248:4000",
+                changeOrigin:true
+            }
         },
         
        

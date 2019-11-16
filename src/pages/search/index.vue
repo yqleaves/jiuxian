@@ -1,7 +1,7 @@
 <template>
   <div>
-    <div class="search">
-      <a href="#"></a>
+    <div class="searchs">
+      <a href="#" @click="handleclick()"></a>
       <em class="icon"></em>
       <input type="text" placeholder="硬核11.11 豪掷千万补贴" v-model="value" />
       <div class="searchbtn">搜索</div>
@@ -15,7 +15,7 @@
       <span>热门搜索</span>
     </div>
 
-    <div class="box">
+    <div class="boxkind">
       <span v-for="(items,index1) in arrs" :key="index1">{{items}}</span>
     </div>
 
@@ -55,6 +55,11 @@ export default {
       
       
     }
+  },
+  methsods:{
+    handleclick(){
+      this.$router.back()
+    }
   }
 };
 </script>
@@ -81,7 +86,7 @@ body {
   height: 100%;
 }
 
-.search {
+.searchs {
   width: 100%;
   height: 0.4rem;
   border-bottom: 1px solid #ccc;
@@ -91,7 +96,7 @@ body {
   top: 0;
   left: 0;
 }
-.search a {
+.searchs a {
   display: inline-block;
   width: 0.33rem;
   height: 0.4rem;
@@ -99,7 +104,7 @@ body {
   background-size: 1.2rem 0.4rem;
   cursor: pointer;
 }
-.search input {
+.searchs input {
   padding: 0 0.3rem;
   width: 3rem;
   font-size: 0.12rem;
@@ -113,7 +118,7 @@ body {
   border: none;
   position: relative;
 }
-.search .icon {
+.searchs .icon {
   position: absolute;
   display: inline-block;
   width: 0.12rem;
@@ -124,7 +129,7 @@ body {
   background-size: 1.2rem 0.4rem;
   z-index: 2;
 }
-.search .searchbtn {
+.searchs .searchbtn {
   width: 0.54rem;
   height: 0.4rem;
   font-size: 0.14rem;
@@ -159,14 +164,14 @@ body {
   display: inline-block;
 }
 
-.box {
+.boxkind {
   padding: 0.12rem 0.1rem 0 0.2rem;
   display: flex;
   flex-wrap: wrap;
   align-content: flex-start;
   min-height: 1rem;
 }
-.box span {
+.boxkind span {
   display: inline-block;
   padding: 0 0.12rem;
   height: 0.23rem;

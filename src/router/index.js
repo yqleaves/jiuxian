@@ -2,7 +2,7 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import alcohol from "./alcohol";
 import cart from "./cart";
-
+import {getCookie} from '../utils/cookie'
 Vue.use(VueRouter);
 
 const router = new VueRouter({
@@ -125,10 +125,10 @@ const router = new VueRouter({
 
 router.beforeEach((to,from,next)=>{
     if(to.path !="/login" && to.meta.requiredAuth){
-        if(localStorage.getItem("Authorization")){
-            next();
+            if(getCookie("token")){
+            next()
         }else{
-            next({name:"login",params:{to:to.path}});
+            next({name:"login",params:{path:to.path}})
         }
     }else{
         next();
