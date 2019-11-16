@@ -53,15 +53,14 @@ export default {
         // let data = await recommendListApi(1165);
         // console.log(data)
     },
-    activated(){
-        console.log("执行了")
-    },
+    // activated(){
+    //     console.log("执行了")
+    // },
     methods:{
         async handleRecommendList(pageNum){
              let data = await recommendListApi(pageNum);
              
              this.recommendList = data.promoList;
-             console.log(this.recommendList);
             //  sessionStorage.setItem("this.recommendList",JSON.stringify(data.promoList));
 
             //  if(sessionStorage.getItem(this.recommendList)){

@@ -3,7 +3,7 @@ export default {
     name:"cart",
     component:_=>import("@pages/cart"),
     meta:{
-        flag:true,
+        flag:false,
         requiredAuth:false,
     }
 }

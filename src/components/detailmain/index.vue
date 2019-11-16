@@ -84,7 +84,7 @@
                 <div class="count-btn">
                     <v-touch tag="i" class="sub" @tap="handleReduce()">-</v-touch>
                     <!-- <input type="text" value="1"> -->
-                    <div class="input">{{num}}</div>
+                    <div class="input" ref="number">{{num}}</div>
                     <v-touch tag="i" class="push" @tap="handleAdd()">+</v-touch>
                 </div>
             </div>
@@ -121,28 +121,17 @@ export default {
            type: String,
        },
        price:{
-           type: String,
+           type: String, 
        }
    },
     data(){
         return{ 
-            list:[],
-            shop:[],
-            id:""
+            cartList:[],
+            id:"",
+            
         }
     },
-    // created(){
-    //     this.id = this.$route.params.id;
-    //     if(this.id<=9){
-    //          this.list = JSON.parse(sessionStorage.getItem("this.recommendList"))[this.id]
-    //          console.log(this.id)
-    //     }else{
-    //         this.list = JSON.parse(sessionStorage.getItem("this.shopList"))[this.id]
-    //     }
-       
-        
-    //     // console.log(this.list.commonProductInfo)
-    // },
+   
     mounted(){
         var swiper = new Swiper('.swiper-container', {
             spaceBetween: 30,
@@ -157,28 +146,28 @@ export default {
                 clickable: true,
             },
         });
+        
     },
     methods:{
         handleReduce(){
              this.$store.commit("det/handleNumReduce")
-             console.log(1)
         },
         handleAdd(){
              this.$store.commit("det/handleNumAdd")
         }
+
     },
     computed:{
         ...mapState({
              num:state=>state.det.num
         })
-       
     }
   
    
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
     
 /* main */
 .main{

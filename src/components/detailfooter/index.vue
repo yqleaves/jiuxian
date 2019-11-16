@@ -8,9 +8,9 @@
             <li>
                 <i class="icon2"></i>
             </li>
-            <li>
+            <router-link tag="li" to="/cart">
                 <i class="icon3"></i>
-            </li>
+            </router-link>
         </ul>
         <a class="addCart" @click="handleAddCart()">加入购物车</a>
         <a class="buy">立即购买</a>
@@ -23,12 +23,26 @@ import { Toast } from 'vant';
 
 Vue.use(Toast);
 export default {
+    data(){
+        return{ 
+            shopList:[],
+        }
+    },
      methods:{
          handleAddCart(){
              Toast('加入购物车成功!');
-         }
+             this.$store.commit("det/handleStorage",this.shopList)
+         },
         
+     },
+     mounted(){
+         this.$observer.$on("sendList",(params)=>{
+             this.shopList = params;
+             console.log(this.shopList)
+         })
      }
+    
+     
 }
 </script>
 
