@@ -45,6 +45,7 @@ import Vue from 'vue';
 import { CountDown } from 'vant';
 
 Vue.use(CountDown);
+import messageBox from "@/lib/messageBox/index.js";
 export default {
     name:"Alcohol",
     components:{
@@ -64,7 +65,15 @@ export default {
         document.title = this.$route.meta.title;
         // let data = await shopList(1);
         // console.log(data);
+        messageBox({
+            title:"城市信息",
+            content:"北京",
+            ok:()=>{
+                alert("欢迎")
+            }
+            })
     },
+    
     mounted(){
         this.$refs.scroll.handlepullingDown();
         // this.$refs.yscroll.handlepullingUp();

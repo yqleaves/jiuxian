@@ -1,8 +1,8 @@
 <template>
   <div>
     <div class="search">
-      <a href="#"></a>
-      <em class="icon"></em>
+      <v-touch tag="a" href="#" @tap="handleback()"></v-touch>
+      <em class="icon" ></em>
       <input type="text" placeholder="硬核11.11 豪掷千万补贴" v-model="value" />
       <div class="searchbtn">搜索</div>
     </div>
@@ -55,11 +55,16 @@ export default {
       
       
     }
+  },
+  methods:{
+    handleback() {
+      this.$router.back();
+    },
   }
 };
 </script>
 
-<style>
+<style scoped>
 html,
 body {
   font-size: 26.67vw;

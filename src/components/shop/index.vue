@@ -66,16 +66,10 @@ export default {
     methods:{
         async handleGetshopList(tabnum){
             let data = await shopListApi(tabnum);
-            console.log(data)
+            // console.log(data)
             this.shopList = data.killProList 
             
-            //  sessionStorage.setItem("this.shopList",JSON.stringify(data.killProList));
-
-            //  if(sessionStorage.getItem(this.shopList)){
-            //      this.shopList = JSON.parse(sessionStorage.getItem(this.shopList))
-            //  }else{
-            //      this.shopList = data.killProList;
-            //  }
+            
         }
     },
     
