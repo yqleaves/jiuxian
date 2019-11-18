@@ -7,6 +7,7 @@
       <div class="user">
         <div class="mask">
           <img src="https://misc.jiuxian.com/m_user/images/usercenter/userPhoto.png" alt />
+          <!-- <img :src="image" alt=""> -->
         </div>
         <div class="order">
           <span>{{user}}</span>
@@ -109,7 +110,8 @@ export default {
     }
   },
   created(){
-    this.user = getCookie("name")
+    this.user = getCookie("name");
+    this.image = getCookie("urlPic");
   },
   methods:{
     handledel(){
