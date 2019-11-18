@@ -21,7 +21,7 @@
     <div class="sign" @click="login">立即登录</div>
 
     <div class="server">
-      <span>免费注册</span>
+      <span @click="handleRegister()">免费注册</span>
       <span>找回密码</span>
     </div>
 
@@ -54,18 +54,15 @@ export default {
   created() {},
 
   methods: {
+    handleRegister(){
+      this.$router.push("/register")
+    },
     async login() {
       this.username = this.$refs.username.value;
       this.password = this.$refs.password.value;
 
       let data = await loginApi(this.username, this.password);
       console.log(data);
-    //   if (data.data.code === 1)  {
-    //       if (getCookie("token")) {
-    //         getCookie("name", data.data.list.name);
-    //       }
-    //       this.$router.push("/mine");
-    //     }
         if (data.data.code == 1) {
           if (getCookie("token")) {
             setCookie("name", data.data.list.name);
@@ -74,7 +71,7 @@ export default {
           }
         }
       }
-    }
+    },
   
 };
 </script>
