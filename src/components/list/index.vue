@@ -71,19 +71,7 @@ export default {
         }
        
     },
-    // mounted(){
-        
-    //     this.$refs.scroll.handlepullingUp(async ()=>{
-    //     let n = parseInt((Math.random()*6)+1);
-    //     //  let arr = [10,1,20,40,50,55,59]
-    //     let data = await recommendListApi(n);
-    //     console.log(n)
-    //     this.recommendList = [...this.clearList,...data.promoList];
-    //     sessionStorage.setItem("recommendList",JSON.stringify(data.promoList))
-    //     this.$refs.scroll.handlefinishPullUp();
-    //     })
-    //     // this.$refs.scroll.handleScroll();
-    // }
+    
  
  
 }

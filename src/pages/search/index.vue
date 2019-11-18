@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="search">
+    <div class="searchs">
       <v-touch tag="a" href="#" @tap="handleback()"></v-touch>
       <em class="icon" ></em>
       <input type="text" placeholder="硬核11.11 豪掷千万补贴" v-model="value" />

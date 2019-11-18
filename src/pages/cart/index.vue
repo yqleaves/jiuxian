@@ -8,8 +8,7 @@
     <div class="content">
         <div class="cartTitle">
             <!-- <i></i> -->
-            <van-checkbox v-model="checked" checked-color="#fd5a5b"
-            @change="handleChange()"></van-checkbox>
+            <van-checkbox v-model="checked" checked-color="#fd5a5b" @click="handleChange()"></van-checkbox>
             <img src="https://mcart.jiuxian.com/statics/images/jx.png" alt="">
             酒店自营
         </div>
@@ -17,7 +16,7 @@
         <div class="cartList" v-for="(item,index) in goodsList" :key="index">
             <div class="item" >
                 <div class="left">
-                    <van-checkbox v-model="checked"  name="index" checked-color="#fd5a5b"></van-checkbox>
+                    <van-checkbox v-model="item.flag"  checked-color="#fd5a5b" @click="handleGoodsItemChange(index)"></van-checkbox>
                     <img :src="item.img" alt="">
                 </div>
                 
@@ -29,12 +28,12 @@
                     </p>
                     <div class="cartBtn">
                         <div class="button">
-                            <span class="reduce" >-</span>
+                            <span class="reduce" @click="handleReduce(index)">-</span>
                             <div class="input">{{item.num}}</div>
-                            <span class="add" >+</span>
+                            <span class="add" @click="handleAdd(index)">+</span>
                    </div>
                         <div class="delete">
-                            | <span>删除</span>
+                            | <span @click="handleDelete(index)">删除</span>
                         </div>
                     </div>
                 </div>
@@ -46,13 +45,12 @@
     <!-- footer - cart bottom-->
     <div class="cartBtm">
         <div class="check">
-            <van-checkbox v-model="checked" checked-color="#fd5a5b"></van-checkbox>
+            <van-checkbox v-model="checked" checked-color="#fd5a5b"  @click="handleChange()"></van-checkbox>
         </div>
         <div class="total">
             <p>
                 
-                <span>合计:</span><em>￥ 
-                    <!-- {{countPrice.sPrice}} -->
+                <span>合计:</span><em>￥{{countPrice.sPrice}}.00
                     </em>
             </p>
             <p>
@@ -60,7 +58,7 @@
             </p>
         </div>
         <div class="go-buy">去结算(<i>
-            <!-- {{countPrice.sCount}} -->
+            {{countPrice.sCount}}
             </i>)</div>
        
     </div>
@@ -77,35 +75,55 @@ Vue.use(Checkbox).use(CheckboxGroup);
 export default {
     name:"Cart",
     components:{
-        // Header,
     },
-    
     data() {
         return {
             checked: true,
+            shopList:[]
         };
     },
     created(){
-        this.$store.state.det.goodsList = JSON.parse(localStorage.getItem("cartlist"));
-        // console.log( this.$store.state.shopList)
-        // this.$store.commit("cart/handleGetCart",JSON.parse(localStorage.getItem("cartlist")))  
+        
+        this.$store.state.cart.goodsList = JSON.parse(localStorage.getItem("cartlist"));
     },
    
     computed:{
        ...mapState({
-           goodsList:state=>state.det.goodsList,
+           goodsList:state=>state.cart.goodsList,
        }),
        ...mapGetters({
-        //    countPrice:"countPrice"
+           countPrice:"cart/countPrice"
        })
     },
     methods:{
         ...mapMutations({
-            handleChange:"handleChange"
-        })
-    }
+            handleReduce:"cart/handleReducer",
+            handleAdd:"cart/handleAdd",
+            handleChange:"cart/handleChange",
+            handleGoodsItemChange:"cart/handleGoodsItemChange",
+            handleDelete:"cart/handleDelete"
+        }),
+        handleChange(){
+            this.$store.state.cart.goodsList.forEach(item => {
+                item.flag = !this.checked;
+            });
+        },
+        handleGoodsItemChange(index){
+            this.$store.state.cart.goodsList[index].flag = !this.$store.state.cart.goodsList[index].flag;
+            let stop = true;
+
+            for(var i=0;i< this.$store.state.cart.goodsList.length;i++){
+                
+                if(!this.$store.state.cart.goodsList[i].flag){
+                    stop = false;
+                    break;
+                    }
+                }
+                this.checked = stop;
+            }
+        },
+        
     
-   
 }
 </script>
 
@@ -113,6 +131,8 @@ export default {
 .cart{
     overflow: auto;
     height: 100%;
+    padding-top: .7rem;
+    padding-bottom: .51rem;
 }
     /* topTib */
 .topTib{
@@ -144,8 +164,8 @@ export default {
     height:100%;
     overflow: auto;
     width: 100%;
-    padding-top: .7rem;
-    padding-bottom: .51rem;
+    // padding-top: .7rem;
+    // padding-bottom: .51rem;
 }
 .content .cartTitle{
     height: .45rem;

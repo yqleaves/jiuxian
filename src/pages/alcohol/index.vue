@@ -1,10 +1,10 @@
 <template>
    
     <div class="alcohol">
-        
+        <Scroll ref="scroll">
         <div class="content">
             <Head/>
-            <Scroll ref="scroll">
+            
             <Picture/>
             <Kind/>
             <div class="countdown">
@@ -26,9 +26,9 @@
             
             <Shop/>
             <List/>
-            </Scroll>
+            
         </div>
-        
+        </Scroll>
         <!-- <Loading/> -->
     </div>
    
@@ -75,10 +75,9 @@ export default {
     },
     
     mounted(){
-        this.$refs.scroll.handlepullingDown();
-        // this.$refs.yscroll.handlepullingUp();
-       
+        
     }
+      
     
 
 }
@@ -86,10 +85,10 @@ export default {
 
 <style lang="scss" scoped>
     .alcohol{
-        height: 100%; overflow: auto; width:100%; 
+        height: 100%; overflow: auto; width:100%; padding-bottom: .42rem;
     }
     .content{
-         overflow: auto; width: 100%; padding-bottom: .42rem;
+         overflow: auto; width: 100%; 
     }
     .item {
         display: inline-block;

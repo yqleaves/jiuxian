@@ -2,7 +2,7 @@
     <div class="detail">
         <Header title="详情" icon/>
         <div class="content">
-             <Detailmain :img="img" :name="name" :price="price"/>
+             <Detailmain :img="img" :name="name" :price="price" @handle="sendData"/>
              <Detailbottom/>
              <!-- footer -->
             <div class="footer">
@@ -34,6 +34,7 @@ import Detailbottom from "@/components/detailbottom"
 import Vue from 'vue';
 import { Toast } from 'vant';
 import {mapState} from "vuex"
+import { parse } from 'path';
 Vue.use(Toast);
 export default {
     name: "Detail",
@@ -56,21 +57,53 @@ export default {
             img:"",
             name:"",
             price:"",
+            list:[],
+            num:''
         }
     },
     
      methods:{
+         sendData(params){
+             console.log(params)
+             this.num = params
+         },
          handleAddCart(){
+             this.list = JSON.parse(localStorage.getItem("cartlist"))
+             if(!this.list){
+                 this.list=[]
+             }
              Toast('加入购物车成功!');
-             this.$store.dispatch("det/handleStorage",{
+             var info = {
                 img: this.$route.query.img,
                 id: this.$route.query.id,
                 name:this.$route.query.name,
                 price:this.$route.query.price,
                 flag: true,
-                num:this.$store.state.det.num
-            })
+                num:this.num
+            }
+            var has = 0;
+            var index = "";
+            for(var i=0;i<this.list.length;i++){
+                if(info.id == this.list[i].id){
+                    has = 1;
+                    index = i;
+                    break;
+                }
+            }
+            if(has==0){
+                this.list.push(info)
+            }
+            else{
+                this.list[index].num += info.num
+            }
+            // console.log(info.name)
+
+            // this.list.push(info)
+           
+            localStorage.setItem("cartlist",JSON.stringify(this.list))
+            
          },
+         
         
      },
     
@@ -79,7 +112,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
     .detail{
         height: 100%;
         background: #f5f5f5;

@@ -84,7 +84,7 @@
                 <div class="count-btn">
                     <v-touch tag="i" class="sub" @tap="handleReduce()">-</v-touch>
                     <!-- <input type="text" value="1"> -->
-                    <div class="input" ref="number">{{num}}</div>
+                    <div class="input" ref="number">{{n}}</div>
                     <v-touch tag="i" class="push" @tap="handleAdd()">+</v-touch>
                 </div>
             </div>
@@ -128,10 +128,10 @@ export default {
         return{ 
             cartList:[],
             id:"",
-            
+            n:1
         }
     },
-   
+    
     mounted(){
         var swiper = new Swiper('.swiper-container', {
             spaceBetween: 30,
@@ -146,22 +146,26 @@ export default {
                 clickable: true,
             },
         });
-        
+        this.$emit("handle",this.n);
     },
     methods:{
         handleReduce(){
-             this.$store.commit("det/handleNumReduce")
+            if(this.n <= 1){
+                this.n = 1
+                this.$emit("handle",this.n);
+            }else{
+                this.n--
+                this.$emit("handle",this.n);
+            }
         },
         handleAdd(){
-             this.$store.commit("det/handleNumAdd")
-        }
+            this.n++
+            this.$emit("handle",this.n);
+        },
+    
 
     },
-    computed:{
-        ...mapState({
-             num:state=>state.det.num
-        })
-    }
+    
   
    
 }

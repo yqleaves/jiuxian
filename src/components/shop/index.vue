@@ -5,7 +5,7 @@
              
             <ul class="kind-box">
                 <li v-for="(item,index) in shopList" :key="index">
-                    <router-link :to="'/detail/?id='+item.actTypeId+'&name='+item.proName+
+                    <router-link :to="'/detail/?id='+item.actId+'&name='+item.proName+
                     '&img='+item.proImg+'&price='+item.proPrice" href="">
                         <img :src="item.proImg" alt="">
                         <span class="name">{{item.proName}}</span>

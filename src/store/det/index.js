@@ -1,7 +1,7 @@
 
 let state = {
     num : 1,
-    goodsList:[]
+    // goodsList:[]
 }
 
 let actions = {
@@ -11,21 +11,7 @@ let actions = {
 }
 
 let mutations = {
-    handlePushStorage(state,params){
-        state.goodsList.push(params);
-        localStorage.setItem("cartlist",JSON.stringify(state.goodsList))
-    },
-    handleNumReduce(state){
-        if(state.num <= 1){
-            state.num = 1
-        }else{
-            state.num--
-        }
-       
-    },
-    handleNumAdd(state){
-        state.num+=1
-    },
+    
     
 }
 let getters = {
